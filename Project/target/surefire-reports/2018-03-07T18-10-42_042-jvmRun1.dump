@@ -1,0 +1,21 @@
+# Created on 2018-03-07T18:10:44.635
+org.apache.maven.surefire.util.SurefireReflectionException: org.junit.platform.commons.util.PreconditionViolationException: Cannot create Launcher without at least one TestEngine; consider adding an engine implementation JAR to the classpath
+	at org.apache.maven.surefire.util.ReflectionUtils.instantiateOneArg(ReflectionUtils.java:139)
+	at org.apache.maven.surefire.booter.ForkedBooter.createProviderInCurrentClassloader(ForkedBooter.java:392)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:372)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:334)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:119)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:407)
+Caused by: org.junit.platform.commons.util.PreconditionViolationException: Cannot create Launcher without at least one TestEngine; consider adding an engine implementation JAR to the classpath
+	at org.junit.platform.commons.util.Preconditions.condition(Preconditions.java:285)
+	at org.junit.platform.launcher.core.DefaultLauncher.<init>(DefaultLauncher.java:55)
+	at org.junit.platform.launcher.core.LauncherFactory.create(LauncherFactory.java:59)
+	at org.junit.platform.surefire.provider.JUnitPlatformProvider.<init>(JUnitPlatformProvider.java:79)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.maven.surefire.util.ReflectionUtils.instantiateOneArg(ReflectionUtils.java:135)
+	... 5 more
+
+
