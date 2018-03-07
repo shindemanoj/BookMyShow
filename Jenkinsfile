@@ -10,15 +10,15 @@ pipeline {
        stage('Build') {
            steps {
                echo "Building"
-               sh 'mvn compile'
-               sh 'mvn package’
+               sh 'mvn -f Project/pom.xml compile'
+               sh 'mvn -f Project/pom.xml package'
            }
        }
        stage('Test'){
            steps {
                echo "Testing"
-               sh 'mvn test'
+               sh 'mvn -f Project/pom.xml test'
            }
        }
-    }
+   }
 }
