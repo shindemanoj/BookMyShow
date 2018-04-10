@@ -79,12 +79,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>3.3.6</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>textAngular</artifactId>
 			<version>1.5.14</version>

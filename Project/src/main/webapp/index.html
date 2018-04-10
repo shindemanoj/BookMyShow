@@ -2,6 +2,9 @@
 <head>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
 <script src="/webjars/angularjs/1.4.9/angular.js"></script>
 <script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
 <script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
@@ -11,24 +14,28 @@
 	src="/webjars/textAngular/1.5.14/dist/textAngular-sanitize.min.js"></script>
 <link rel="stylesheet"
 	href="/webjars/textAngular/1.5.14/dist/textAngular.css">
-<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
-
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="css/3-col-portfolio.css" rel="stylesheet">
 <script src="app.js"></script>
 <script src="config.js"></script>
-
 <meta charset="UTF-8">
-<title>DBMS</title>
+<title>BookMyShow</title>
 
 <!-- Controllers -->
 <script src="views/user/controllers/login.controller.client.js"></script>
 <script src="views/user/controllers/register.controller.client.js"></script>
+<script src="views/user/controllers/movies.controller.client.js"></script>
+<script src="views/user/controllers/movie.details.controller.client.js"></script>
 
 <!-- Services -->
 <script src="services/user.service.client.js"></script>
-
-<link
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet" />
+<script src="services/movie.service.client.js"></script>
+<script src="services/movie.data.service.client.js"></script>
 
 </head>
 <body>

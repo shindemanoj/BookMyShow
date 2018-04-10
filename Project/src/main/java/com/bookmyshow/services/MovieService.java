@@ -1,0 +1,41 @@
+//package com.bookmyshow.services;
+//
+//import java.util.Optional;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.RestController;
+//
+//import com.bookmyshow.models.User;
+//import com.bookmyshow.repositories.UserRepository;
+//
+//@RestController
+//public class MovieService {
+//	@Autowired
+//	UserRepository userRepository;
+//
+////	@GetMapping("/api/movies")
+////	public Iterable<User> findAllUsers() {
+////		if (username != null && password != null) {
+////			return userRepository.findUserByCredentials(username, password);
+////		} else if (username != null) {
+////			return userRepository.findUserByUsername(username);
+////		}
+////		return userRepository.findAll();
+////	}
+//
+//	@PostMapping("/api/user")
+//	public User createUser(@RequestBody User user) {
+//		return userRepository.save(user);
+//	}
+//
+//	@GetMapping("/api/user/{userId}")
+//	public Optional<User> findUserById(@PathVariable("userId") int id) {
+//		return userRepository.findById(id);
+//	}
+//
+//}
