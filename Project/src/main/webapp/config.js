@@ -25,6 +25,16 @@
                 controller: 'movieDetailsController',
                 controllerAs: 'model'
             })
+            .when("/theatreOwner/:toid/profile", {
+                templateUrl: 'views/theatreOwner/templates/profileEdit.view.client.html',
+                controller: 'profileController',
+                controllerAs: 'model'
+            })
+            .when("/theatreOwner/:toid/profile/add", {
+                templateUrl: 'views/theatreOwner/templates/addTheatre.view.client.html',
+                controller: 'profileController',
+                controllerAs: 'model'
+            })
       
     }
 })();

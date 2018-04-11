@@ -13,9 +13,8 @@ public class TheatreOwner extends Person{
 		super();
 	}
 
-	public TheatreOwner(int id, String firstName, String lastName, String username, String password, String email, Date dob, String phone, int noOfTheatres) {
+	public TheatreOwner(int id, String firstName, String lastName, String username, String password, String email, Date dob, String phone) {
 		super(id, firstName, lastName, username, password, email, dob, phone);
-		this.noOfTheatres=noOfTheatres;
 	}
 
 	public int getNoOfTheatres() {

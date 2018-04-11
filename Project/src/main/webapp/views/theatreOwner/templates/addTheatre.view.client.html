@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Add Theatre</h1>
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+    <input ng-model=""
+           type="text"
+           class="form-control"
+           placeholder="theatre name"/>
+    <input ng-model=""
+           type="text"
+           class="form-control"
+           placeholder="theatre location"/>
+    <input ng-model=""
+           type="text"
+           class="form-control"
+           placeholder="decscription">
+    <input ng-model="model.user.phone"
+           type="text"
+           class="form-control"
+           placeholder="phone number">
+    <a class="btn btn-primary btn-block"
+       ng-click="model.register(model.user)">Add</a>
+    <a class="btn btn-danger  btn-block"
+       href="#/theatreOwner/profile">Cancel</a>
+</div>
