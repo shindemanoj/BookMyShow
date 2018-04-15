@@ -16,7 +16,6 @@ INDEX VERSION 1.130+C:\Users\manojs\Documents\GitHub\BookMyShow\.metadata\.plugi
 4227911699.index
 4235702009.index
 2657706373.index
-449384428.index
 2470519452.index
 115232142.index
 2486370381.index

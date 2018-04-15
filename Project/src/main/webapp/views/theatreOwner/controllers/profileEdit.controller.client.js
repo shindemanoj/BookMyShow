@@ -5,11 +5,12 @@
 (function () {
     angular.module("BookMyShow").controller("profileController", profileController);
 
-    function profileController($location, $scope, $routeParams, UserService, TheatreOwnerService, $rootScope) {
+    function profileController($location, $scope, $routeParams, UserService, TheatreOwnerService, TheatreService, $rootScope) {
         var vm = this;
         var theatreOwnerId = $routeParams['toid'];
         vm.updateTheatreOwner = updateTheatreOwner;
         vm.deleteTheatreOwner = deleteTheatreOwner;
+        vm.removeTheatre = removeTheatre;
 
         //var userId = loggedin.data._id;
         // vm.deleteUser = deleteUser;
@@ -63,6 +64,13 @@
             TheatreOwnerService.deleteTheatreOwner(theatreOwnerId);
             $location.url("/login");
         }
+
+        function removeTheatre(theatreOwnerId, ) {
+            TheatreOwnerService.deleteTheatreOwner(theatreOwnerId);
+            $location.url("/login");
+        }
+
+
 
     }
 })();

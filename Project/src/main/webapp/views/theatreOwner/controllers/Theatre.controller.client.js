@@ -13,14 +13,20 @@
 
         function init() {
             if (theatreId !=null) {
-                renderTheatreInfo();
+                renderTheatreInfo(theatreId);
             }
         }
 
         init();
 
-        function renderTheatreInfo(theatre) {
-            vm.theatre = theatre;
+        function renderTheatreInfo(theatreId) {
+            var promise=TheatreService.findTheatreById(theatreId);
+            promise.success(function (response) {
+                vm.theatre = response;
+            })
+                .error(function () {
+                    vm.error = "unable to load theatre";
+                });
         }
 
         function updateTheatre(newtheatre) {

@@ -85,19 +85,22 @@
                 <th scope="col">#</th>
                 <th scope="col">Theatre Name</th>
                 <th scope="col">Theatre Location</th>
+                <th scope="col">Edit/Delete</th>
             </tr>
             </thead>
             <tbody id="TheatreBdy" style="overflow-y: scroll; height: 200px; width: 100%;">
-            <tr ng-repeat="theater in model.allTheatres">
-                <td>{{theater.index()+1}}</td>
-                <td>{{theater.name}}</td>
-                <td>{{theater.location}}</td>
+            <tr ng-repeat="theatre in model.allTheatres">
+                <td>{{theatre.index()+1}}</td>
+                <td>{{theatre.name}}</td>
+                <td>{{theatre.location}}</td>
+                <td><a class="fa fa-edit button " href="#/theatreOwner/{{model.theatreOwner.id}}/theatre/{{theatre.id}}"></a>
+                    <a class="fa fa-remove button" href=""></a></td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <a class="btn btn-primary  btn-block" ng-click="" href="#/theatreOwner/{{model.theatreOwner.id}}/add">Add Theater</a>
+    <a class="btn btn-primary  btn-block" ng-click="" href="#/theatreOwner/{{model.theatreOwner.id}}/theatre">Add Theater</a>
 
 
 </div>
