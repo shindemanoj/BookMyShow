@@ -1,34 +1,63 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="#/">Book My Show</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" href="#/">Home </a></li>
+				<li class="nav-item"><a class="nav-link" href="#/login">Login</a>
+				</li>
+				<li class="nav-item active"><a class="nav-link"
+					href="#/register">Register <span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="#/">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
 <div class="container">
-    <h1>Register</h1>
+	<h1>Register</h1>
 
-    <div ng-show="model.error" class="alert alert-danger" role="alert">
-        {{model.error}}
-    </div>
+	<div ng-show="model.error" class="alert alert-danger" role="alert">
+		{{model.error}}</div>
 
-    <input ng-model="model.user.username" type="text" class="form-control" placeholder="username"/>
-    <input ng-model="model.user.password" type="password" class="form-control" placeholder="password"/>
-    <input type="password" class="form-control" placeholder="verify password"/>
-    <input ng-model="model.user.email" type="email" class="form-control" placeholder="email ID">
-    <input ng-model="model.user.firstName" type="text" class="form-control" placeholder="first name">
-    <input ng-model="model.user.lastName" type="text" class="form-control" placeholder="last name">
-    <input ng-model="model.user.phone" type="text" class="form-control" placeholder="phone number">
+	<input ng-model="model.user.username" type="text" class="form-control"
+		placeholder="username" /> <input ng-model="model.user.password"
+		type="password" class="form-control" placeholder="password" /> <input
+		type="password" class="form-control" placeholder="verify password" />
+	<input ng-model="model.user.email" type="email" class="form-control"
+		placeholder="email ID"> <input ng-model="model.user.firstName"
+		type="text" class="form-control" placeholder="first name"> <input
+		ng-model="model.user.lastName" type="text" class="form-control"
+		placeholder="last name"> <input ng-model="model.user.phone"
+		type="text" class="form-control" placeholder="phone number">
 
-    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-        <div class="input-group-addon"><span class="glyphicon glyphicon-user text-color"></span></div>
-        <div class="row container-fluid">
-            <div class="col-md-6 col-sm-6  btn btn-default col-xs-12">
-                <label class=" text-color">
-                    <input type="radio" value="theatreowner" name="chooseone"  ng-model="model.user.role"> Theatre-Owner
-                </label>
-            </div>
-            <div class="col-md-6 col-sm-6 btn btn-default col-xs-12">
-                <label class="text-color">
-                    <input type="radio" value="user" name="chooseone" ng-model="model.user.role"> User
-                </label>
-            </div>
-        </div>
-    </div>
+	<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+		<div class="input-group-addon">
+			<span class="glyphicon glyphicon-user text-color"></span>
+		</div>
+		<div class="row container-fluid">
+			<div class="col-md-6 col-sm-6  btn btn-default col-xs-12">
+				<label class=" text-color"> <input type="radio"
+					value="theatreowner" name="chooseone" ng-model="model.user.role">
+					Theatre-Owner
+				</label>
+			</div>
+			<div class="col-md-6 col-sm-6 btn btn-default col-xs-12">
+				<label class="text-color"> <input type="radio" value="user"
+					name="chooseone" ng-model="model.user.role"> User
+				</label>
+			</div>
+		</div>
+	</div>
 
-    <a class="btn btn-primary btn-block" ng-click="model.register(model.user)">Register</a>
-    <a class="btn btn-danger  btn-block" href="#/login">Cancel</a>
+	<a class="btn btn-primary btn-block"
+		ng-click="model.register(model.user)">Register</a> <a
+		class="btn btn-danger  btn-block" href="#/login">Cancel</a>
 </div>

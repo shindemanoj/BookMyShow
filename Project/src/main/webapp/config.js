@@ -40,6 +40,9 @@
                 controller: 'addTheatreController',
                 controllerAs: 'model'
             })
+            .otherwise({
+                redirectTo: "/"
+            });
       
     }
 })();

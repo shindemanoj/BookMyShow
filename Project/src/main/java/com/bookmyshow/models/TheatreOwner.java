@@ -10,12 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
-public class TheatreOwner extends Person{
+public class TheatreOwner extends Person {
 
 	private int noOfTheatres;
 
-    @OneToMany(mappedBy="theatreOwner")
-    @JsonIgnore
+	@OneToMany(mappedBy = "theatreOwner")
+	@JsonIgnore
 	private List<Theatre> theatres;
 
 	public TheatreOwner() {
@@ -23,9 +23,10 @@ public class TheatreOwner extends Person{
 		super();
 	}
 
-	public TheatreOwner(int id, String firstName, String lastName, String username, String password, String email, Date dob, String phone) {
+	public TheatreOwner(int id, String firstName, String lastName, String username, String password, String email,
+			Date dob, String phone) {
 		super(id, firstName, lastName, username, password, email, dob, phone);
-		theatres= new ArrayList<>();
+		theatres = new ArrayList<>();
 	}
 
 	public int getNoOfTheatres() {
@@ -41,9 +42,10 @@ public class TheatreOwner extends Person{
 	}
 
 	public void setTheatres(Theatre theatre) {
-        this.theatres.add(theatre);
-        if(theatre.getTheatreOwner() != this) {
-            theatre.setTheatreOwner(this);
-        }}
+		this.theatres.add(theatre);
+		if (theatre.getTheatreOwner() != this) {
+			theatre.setTheatreOwner(this);
+		}
+	}
 
 }

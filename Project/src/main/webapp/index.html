@@ -1,50 +1,66 @@
+<!doctype html>
 <html lang="en" ng-app="BookMyShow">
 <head>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <script src="/webjars/angularjs/1.4.9/angular.js"></script>
-    <script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
-    <script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
-    <script src="/webjars/textAngular/1.5.14/dist/textAngular-rangy.min.js"></script>
-    <script src="/webjars/textAngular/1.5.14/dist/textAngular.min.js"></script>
-    <script
-            src="/webjars/textAngular/1.5.14/dist/textAngular-sanitize.min.js"></script>
-    <link rel="stylesheet"
-          href="/webjars/textAngular/1.5.14/dist/textAngular.css">
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/3-col-portfolio.css" rel="stylesheet">
-    <script src="app.js"></script>
-    <script src="config.js"></script>
-    <meta charset="UTF-8">
-    <title>BookMyShow</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="/webjars/textAngular/1.5.14/dist/textAngular.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="css/3-col-portfolio.css" rel="stylesheet">
 
-    <!-- Controllers -->
-    <script src="views/user/controllers/login.controller.client.js"></script>
-    <script src="views/user/controllers/register.controller.client.js"></script>
-    <script src="views/user/controllers/movies.controller.client.js"></script>
-    <script src="views/user/controllers/movie.details.controller.client.js"></script>
-    <script src="views/theatreOwner/controllers/profileEdit.controller.client.js"></script>
-    <script src="views/theatreOwner/controllers/addTheatre.controller.client.js"></script>
-
-    <!-- Services -->
-    <script src="services/user.service.client.js"></script>
-    <script src="services/theatreOwner.service.client.js"></script>
-    <script src="services/theatre.service.client.js"></script>
-    <script src="services/movie.service.client.js"></script>
-    <script src="services/movie.data.service.client.js"></script>
+<title>BookMyShow</title>
 
 </head>
 <body>
 
-<div ng-view></div>
+	<div ng-view></div>
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="container">
+			<span class="text-muted">Copyright &copy; Book My Show 2018.</span>
+		</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+		integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+		crossorigin="anonymous"></script>
+	<script src="/webjars/angularjs/1.4.9/angular.js"></script>
+	<script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
+	<script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
+	<script src="/webjars/textAngular/1.5.14/dist/textAngular-rangy.min.js"></script>
+	<script src="/webjars/textAngular/1.5.14/dist/textAngular.min.js"></script>
+	<script
+		src="/webjars/textAngular/1.5.14/dist/textAngular-sanitize.min.js"></script>
+	<script src="app.js"></script>
+	<script src="config.js"></script>
+	<!-- Controllers -->
+	<script src="views/user/controllers/login.controller.client.js"></script>
+	<script src="views/user/controllers/register.controller.client.js"></script>
+	<script src="views/user/controllers/movies.controller.client.js"></script>
+	<script src="views/user/controllers/movie.details.controller.client.js"></script>
+	<script
+		src="views/theatreOwner/controllers/profileEdit.controller.client.js"></script>
+	<script
+		src="views/theatreOwner/controllers/addTheatre.controller.client.js"></script>
 
+	<!-- Services -->
+	<script src="services/user.service.client.js"></script>
+	<script src="services/theatreOwner.service.client.js"></script>
+	<script src="services/theatre.service.client.js"></script>
+	<script src="services/movie.service.client.js"></script>
+	<script src="services/movie.data.service.client.js"></script>
 </body>
 </html>
