@@ -44,8 +44,8 @@ public class TheatreService {
     }
 
     @DeleteMapping("/api/theatre/{theatreId}")
-    public void deleteTheatre(@PathVariable("theatreId") int id) {
-        theatreRepository.deleteById(id);
+    public void deleteTheatre(@PathVariable("theatreId") int theatreId) {
+        theatreRepository.deleteById(theatreId);
     }
 
     @PutMapping("/api/theatre/{theatreId}")
