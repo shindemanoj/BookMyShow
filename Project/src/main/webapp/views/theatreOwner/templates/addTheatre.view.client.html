@@ -5,24 +5,28 @@
         {{model.error}}
     </div>
 
-    <input ng-model=""
+    <div class="alert alert-success" ng-show="model.message" role="alert">
+        {{model.message}}
+    </div>
+
+    <input ng-model="model.theatre.name"
            type="text"
            class="form-control"
            placeholder="theatre name"/>
-    <input ng-model=""
+    <input ng-model="model.theatre.location"
            type="text"
            class="form-control"
            placeholder="theatre location"/>
-    <input ng-model=""
+    <input ng-model="model.theatre.description"
            type="text"
            class="form-control"
            placeholder="decscription">
-    <input ng-model="model.user.phone"
+    <input ng-model="model.theatre.phone"
            type="text"
            class="form-control"
            placeholder="phone number">
     <a class="btn btn-primary btn-block"
-       ng-click="model.register(model.user)">Add</a>
+       ng-click="model.addTheatre(model.theatre)">Submit</a>
     <a class="btn btn-danger  btn-block"
-       href="#/theatreOwner/profile">Cancel</a>
+       href="#/theatreOwner/profile/{{model.theatreOwnerId}}">Cancel</a>
 </div>

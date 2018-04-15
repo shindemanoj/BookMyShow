@@ -1,9 +1,21 @@
 package com.bookmyshow.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+
+@Entity
 public class Theatre {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String description;
+    private String location;
+
+    @ManyToOne
+    @JsonIgnore
+    private TheatreOwner theatreOwner;
 	
 	public Theatre() {
 		super();
@@ -39,5 +51,25 @@ public class Theatre {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+    public TheatreOwner getTheatreOwner() {
+        return theatreOwner;
+    }
+
+    public void setTheatreOwner(TheatreOwner theatreOwner) {
+        this.theatreOwner = theatreOwner;
+        if(!theatreOwner.getTheatres()
+                .contains(this)) {
+            theatreOwner.getTheatres()
+                    .add(this);
+        }}
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
 }

@@ -12,6 +12,7 @@
             "findTheatreOwnerByCredentials" : findTheatreOwnerByCredentials,
             "updateTheatreOwner" : updateTheatreOwner,
             "deleteTheatreOwner" : deleteTheatreOwner,
+            "getAllTheatres" : getAllTheatres,
             "logout" : logout
         };
         return api;
@@ -33,6 +34,9 @@
         }
         function deleteTheatreOwner(theatreOwnerId) {
             return $http.delete('/api/theatreOwner/'+theatreOwnerId);
+        }
+        function getAllTheatres(theatreOwnerId) {
+            return $http.get('/api/theatreOwner/'+theatreOwnerId+'/getTheatres');
         }
         function logout() {
             return $http.post("/api/logout");

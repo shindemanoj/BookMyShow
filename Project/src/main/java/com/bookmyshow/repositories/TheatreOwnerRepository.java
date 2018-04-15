@@ -14,6 +14,5 @@ public interface TheatreOwnerRepository extends CrudRepository<TheatreOwner, Int
     @Query("SELECT u FROM TheatreOwner u WHERE u.username=:username AND u.password=:password")
     Iterable<TheatreOwner> findTheatreOwnerByCredentials(@Param("username") String username, @Param("password") String password);
 
-    @Query("SELECT u FROM TheatreOwner u WHERE u.id=:id")
-    Iterable<TheatreOwner> findById(@Param("id") int id);
+
 }

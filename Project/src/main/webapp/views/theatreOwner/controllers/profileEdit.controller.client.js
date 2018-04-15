@@ -10,6 +10,7 @@
         var theatreOwnerId = $routeParams['toid'];
         vm.updateTheatreOwner = updateTheatreOwner;
         vm.deleteTheatreOwner = deleteTheatreOwner;
+
         //var userId = loggedin.data._id;
         // vm.deleteUser = deleteUser;
         vm.logout = logout;
@@ -34,15 +35,22 @@
 
         function renderUser(theatreOwner) {
             vm.theatreOwner = theatreOwner;
+            var promise=TheatreOwnerService.getAllTheatres(theatreOwnerId);
+                promise.success(function (response) {
+                   vm.allTheatres=response;
+                })
+                .error(function () {
+                    vm.error = "could not load theatres";
+                });
+
         }
 
-        function updateTheatreOwner(newUser) {
+        function updateTheatreOwner(newtheatreOwner) {
 
             vm.message="";
             vm.error="";
-            UserService
-                .updateUser(userId, newUser)
-                .success(function (response) {
+            var promise=TheatreOwnerService.updateTheatreOwner(theatreOwnerId, newtheatreOwner);
+                promise.success(function (response) {
 
                     vm.message = "user successfully updated";
                 })
@@ -51,8 +59,8 @@
                 });
         }
 
-        function deleteTheatreOwner(userId) {
-            UserService.deleteUser(userId);
+        function deleteTheatreOwner(theatreOwnerId) {
+            TheatreOwnerService.deleteTheatreOwner(theatreOwnerId);
             $location.url("/login");
         }
 
