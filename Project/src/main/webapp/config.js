@@ -30,13 +30,13 @@
                 controller: 'profileController',
                 controllerAs: 'model'
             })
-            .when("/theatreOwner/:toid/add", {
-                templateUrl: 'views/theatreOwner/templates/addTheatre.view.client.html',
+            .when("/theatreOwner/:toid/theatre", {
+                templateUrl: 'views/theatreOwner/templates/Theatre.view.client.html',
                 controller: 'addTheatreController',
                 controllerAs: 'model'
             })
-            .when("/theatreOwner/:toid/edit/:tid", {
-                templateUrl: 'views/theatreOwner/templates/addTheatre.view.client.html',
+            .when("/theatreOwner/:toid/theatre/:tid", {
+                templateUrl: 'views/theatreOwner/templates/Theatre.view.client.html',
                 controller: 'addTheatreController',
                 controllerAs: 'model'
             })
