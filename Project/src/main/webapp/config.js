@@ -31,13 +31,23 @@
                 controllerAs: 'model'
             })
             .when("/theatreOwner/:toid/theatre", {
-                templateUrl: 'views/theatreOwner/templates/Theatre.view.client.html',
+                templateUrl: 'views/theatreOwner/templates/theatre.view.client.html',
                 controller: 'addTheatreController',
                 controllerAs: 'model'
             })
             .when("/theatreOwner/:toid/theatre/:tid", {
-                templateUrl: 'views/theatreOwner/templates/Theatre.view.client.html',
+                templateUrl: 'views/theatreOwner/templates/theatre.view.client.html',
                 controller: 'addTheatreController',
+                controllerAs: 'model'
+            })
+            .when("/admin/users", {
+                templateUrl: 'views/admin/templates/manage.users.view.client.html',
+                controller: 'adminController',
+                controllerAs: 'model'
+            })
+            .when("/admin/users/:uid/edit/:role", {
+                templateUrl: 'views/admin/templates/update.person.view.client.html',
+                controller: 'adminController',
                 controllerAs: 'model'
             })
             .otherwise({

@@ -13,13 +13,14 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="css/3-col-portfolio.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 
 </head>
 <body>
 
 	<div ng-view></div>
 	<!-- Footer -->
-	<footer class="footer">
+	<footer class="footer fixed-bottom">
 		<div class="container">
 			<span class="text-muted">Copyright &copy; Book My Show 2018.</span>
 		</div>
@@ -49,10 +50,9 @@
 	<script src="views/user/controllers/register.controller.client.js"></script>
 	<script src="views/user/controllers/movies.controller.client.js"></script>
 	<script src="views/user/controllers/movie.details.controller.client.js"></script>
-	<script
-		src="views/theatreOwner/controllers/profileEdit.controller.client.js"></script>
-	<script
-		src="views/theatreOwner/controllers/Theatre.controller.client.js"></script>
+	<script src="views/theatreOwner/controllers/profileEdit.controller.client.js"></script>
+	<script src="views/theatreOwner/controllers/theatre.controller.client.js"></script>
+	<script src="views/admin/controllers/admin.controller.client.js"></script>
 
 	<!-- Services -->
 	<script src="services/user.service.client.js"></script>
