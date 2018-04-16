@@ -68,4 +68,18 @@ public class TheatreOwnerService {
         theatreOwnerRepository.save(theatreOwner.get());
     }
 
+    @DeleteMapping("/api/theatreOwner/{theatreOwnerId}/theatre/{theatreId}")
+    public void deleteTheatreForTheatreOwner(@PathVariable("theatreOwnerId") int theatreOwnerId,@PathVariable("theatreId") int theatreId) {
+        Optional<TheatreOwner> theatreOwner = theatreOwnerRepository.findById(theatreOwnerId);
+        Optional<Theatre> theatre   = theatreRepository.findById(theatreId);
+        List<Theatre> theatres= theatreOwner.get().getTheatres();
+        for (Theatre th: theatres) {
+            if(th.getId()== theatreId){
+                theatres.remove(theatre);
+            }
+        }
+        theatreOwner.get().setNoOfTheatres(theatreOwner.get().getNoOfTheatres()- 1);
+        theatreOwnerRepository.save(theatreOwner.get());
+    }
+
 }

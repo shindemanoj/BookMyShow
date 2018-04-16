@@ -1,5 +1,5 @@
 .padding-top{
-    padding-top: 5%;
+    padding-top: 10%;
 }
 #searchBar {
   background-image: url('../images/searchicon.png');
@@ -11,3 +11,4 @@
   border: 1px solid #ddd;
   margin-bottom: 12px;
 }
+

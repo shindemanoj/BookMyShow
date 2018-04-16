@@ -93,8 +93,8 @@
                 <td>{{theatre.index()+1}}</td>
                 <td>{{theatre.name}}</td>
                 <td>{{theatre.location}}</td>
-                <td><a class="fa fa-edit button " href="#/theatreOwner/{{model.theatreOwner.id}}/theatre/{{theatre.id}}"></a>
-                    <a class="fa fa-remove button" href=""></a></td>
+                <td><a class="fa fa-edit button" href="#/theatreOwner/{{model.theatreOwner.id}}/theatre/{{theatre.id}}"></a>
+                    <a class="fa fa-remove button" ng-click="model.removeTheatre(theatre.id)" href=""></a></td>
             </tr>
             </tbody>
         </table>

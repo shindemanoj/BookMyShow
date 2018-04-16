@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#/">Book My Show</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a class="nav-link" href="#/">Home
+                    <span class="sr-only">(current)</span>
+                </a></li>
+                <li class="nav-item"><a class="nav-link" href="#/login">Login</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#/register">Register</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#/">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+    <div class="container padding-top" id="UserDiv"
+         style="height: 350px">
+        <table class="table" id="UserTbl">
+            <thead class="thead-dark" style="background-color: white">
+            <tr>
+                <th scope="col">UserName</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody id="UserBdy" style="overflow-y: scroll; height: 200px; width: 100%;">
+            <tr ng-repeat="user in model.allUsers">
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>User</td>
+                <td><a class="fa fa-edit button" ng-click="model.redirectFunc(user.id, 'user')" href=""></a>
+                    <a class="fa fa-remove button" ng-click="model.deleteUser(user.id)" href=""></a></td>
+            </tr>
+            <tr ng-repeat="user in model.allTheatreOwners">
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>Theatre Owner</td>
+                <td><a class="fa fa-edit button" ng-click="model.redirectFunc(user.id, 'theatreOwner')" href=""></a>
+                    <a class="fa fa-remove button" ng-click="model.deleteTheatreOwner(user.id)" href=""></a></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
