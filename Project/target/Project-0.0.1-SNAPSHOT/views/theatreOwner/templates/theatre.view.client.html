@@ -1,0 +1,68 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="#/">Book My Show</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active"><a class="nav-link" href="#/">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="#/login">Login</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#/register">Register</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#/">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+	<h1>Add Theatre</h1>
+
+	<div ng-show="model.error" class="alert alert-danger" role="alert">
+		{{model.error}}</div>
+
+	<div class="alert alert-success" ng-show="model.message" role="alert">
+		{{model.message}}</div>
+	<input ng-model="model.theatre.name" type="text" class="form-control"
+		placeholder="theatre name" /> <input
+		ng-model="model.theatre.location" type="text" class="form-control"
+		placeholder="theatre location" /> <input
+		ng-model="model.theatre.description" type="text" class="form-control"
+		placeholder="decscription"> <input
+		ng-model="model.theatre.phone" type="text" class="form-control"
+		placeholder="phone number"> <a
+		class="btn btn-primary btn-block"
+		ng-click="model.addTheatre(model.theatre)">Submit</a> <a
+		class="btn btn-info btn-block"
+		ng-click="model.updateTheatre(model.theatre)">Update</a> <a
+		class="btn btn-info btn-block" ng-click="model.addMovie()">Add
+		Movie</a> <a class="btn btn-danger  btn-block"
+		href="#/theatreOwner/profile/{{model.theatreOwnerId}}">Cancel</a>
+	<h3>Now Playing Movies</h3>
+
+	<table ng-show="model.movies" class="table" id="TheatreTbl">
+		<thead class="thead-dark" style="background-color: white">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Movie Title</th>
+				<th scope="col">Delete</th>
+			</tr>
+		</thead>
+		<tbody id="TheatreBdy"
+			style="overflow-y: scroll; height: 200px; width: 100%;">
+			<tr ng-repeat="movie in model.movies">
+				<td>{{$index + 1}}</td>
+				<td>{{movie.title}}</td>
+				<td><a class="fa fa-remove button" ng-click="model.deleteMovie(movie.id, model.theatreId)" href=""></a></td>
+
+			</tr>
+		</tbody>
+	</table>
+</div>

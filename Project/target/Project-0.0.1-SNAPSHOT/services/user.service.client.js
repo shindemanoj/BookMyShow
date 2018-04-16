@@ -11,7 +11,8 @@
             "findUserByUsername" : findUserByUsername,
             "findUserByCredentials" : findUserByCredentials,
             "updateUser" : updateUser,
-            "deleteUser" : deleteUser
+            "deleteUser" : deleteUser,
+            "getAllUsers": getAllUsers
         };
         return api;
 
@@ -32,6 +33,9 @@
         }
         function deleteUser(userId) {
             return $http.delete('/api/user/'+userId);
+        }
+        function getAllUsers() {
+            return $http.get("/api/user");
         }
     }
 })();

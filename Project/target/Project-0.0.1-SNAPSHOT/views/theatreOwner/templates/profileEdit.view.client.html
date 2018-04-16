@@ -1,0 +1,106 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="#/">Book My Show</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active"><a class="nav-link" href="#/">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="#/login">Login</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#/register">Register</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#/">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container padding-top ">
+    <h2 ng-show="model.theatreOwner.username" class="alert alert-warning">Welcome {{model.theatreOwner.firstName}}!</h2>
+    <div class="alert alert-danger" ng-show="model.error" role="alert">
+        {{model.error}}
+    </div>
+
+    <div class="alert alert-success" ng-show="model.message" role="alert">
+        {{model.message}}
+    </div>
+
+    <div class="form-group">
+        <label class="label-color" for="username">Username</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+            <div class="input-group-addon "><span class="glyphicon glyphicon-user text-color"></span></div>
+            <input required ng-model="model.theatreOwner.username" type="text" class="form-control text-color" id="username">
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="label-color" for="email">Email address</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon "><span class="glyphicon glyphicon-envelope text-color"></span></div>
+            <input required ng-model="model.theatreOwner.email" type="email" class="form-control  text-color" id="email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label-color" for="first-name">First Name</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+            <div class="input-group-addon "><span class="glyphicon glyphicon-user text-color"></span></div>
+            <input  ng-model="model.theatreOwner.firstName" type="text" class="form-control  text-color" id="first-name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label-color" for="last-name">Last Name</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+            <div class="input-group-addon "><span class="glyphicon glyphicon-user text-color"></span></div>
+            <input ng-model="model.theatreOwner.lastName" type="text" class="form-control  text-color" id="last-name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label-color" for="phone-number">Phone Number</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon "><span class="glyphicon glyphicon-earphone text-color"></span></div>
+            <input required ng-model="model.theatreOwner.phone" type="text" class="form-control  text-color" id="phone-number">
+        </div>
+    </div>
+
+
+
+
+    <a class="btn btn-danger btn-block"
+       ng-click="model.deleteTheatreOwner(model.theatreOwner.id)">Unregister</a>
+    <a class="btn btn-primary  btn-block" ng-click="showDiv=false; model.updateTheatreOwner(model.theatreOwner)" href="#/theatreOwner/{{model.theatreOwner.id}}/profile">Update</a>
+    <div><br></div>    <div><br></div>     <div><br></div>    <div><br></div>
+
+
+    <div class="container-fluid" id="TheatreDiv"
+         style="height: 350px">
+        <table class="table" id="TheatreTbl">
+            <thead class="thead-dark" style="background-color: white">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Theatre Name</th>
+                <th scope="col">Theatre Location</th>
+                <th scope="col">Edit/Delete</th>
+            </tr>
+            </thead>
+            <tbody id="TheatreBdy" style="overflow-y: scroll; height: 200px; width: 100%;">
+            <tr ng-repeat="theatre in model.allTheatres">
+                <td>{{theatre.index()+1}}</td>
+                <td>{{theatre.name}}</td>
+                <td>{{theatre.location}}</td>
+                <td><a class="fa fa-edit button" href="#/theatreOwner/{{model.theatreOwner.id}}/theatre/{{theatre.id}}"></a>
+                    <a class="fa fa-remove button" ng-click="model.removeTheatre(theatre.id)" href=""></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a class="btn btn-primary  btn-block" ng-click="" href="#/theatreOwner/{{model.theatreOwner.id}}/theatre">Add Theater</a>
+
+
+</div>

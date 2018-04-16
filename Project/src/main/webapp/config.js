@@ -10,9 +10,24 @@
                 controller: 'loginController',
                 controllerAs: 'model'
             })
-            .when("/", {
-                templateUrl: 'views/user/templates/movies.view.client.html',
+            .when("/user/:userId", {
+                templateUrl: 'views/movie/templates/movies.view.client.html',
                 controller: 'movieController',
+                controllerAs: 'model'
+            })
+            .when("/user/:userId/profile", {
+                templateUrl: 'views/user/templates/user.profile.view.client.html',
+                controller: 'userProfileController',
+                controllerAs: 'model'
+            })
+            .when("/user/:userId/movie/:movieId", {
+                templateUrl: 'views/movie/templates/movie.details.view.client.html',
+                controller: 'movieDetailsController',
+                controllerAs: 'model'
+            })
+            .when("/", {
+                templateUrl: 'views/user/templates/home.view.client.html',
+                controller: 'homeController',
                 controllerAs: 'model'
             })
             .when("/register", {
@@ -21,8 +36,8 @@
                 controllerAs: 'model'
             })
             .when("/movie/details", {
-                templateUrl: 'views/user/templates/movie.details.view.client.html',
-                controller: 'movieDetailsController',
+                templateUrl: 'views/user/templates/home.details.view.client.html',
+                controller: 'homeDetailsController',
                 controllerAs: 'model'
             })
             .when("/theatreOwner/:toid/profile", {

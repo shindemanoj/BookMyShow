@@ -8,9 +8,10 @@
         var api = {
             "createMovie"   : createMovie,
             "findAllMovies" : findAllMovies,
+            "findUpcomingMovies" : findUpcomingMovies,
             "findMovieByTitle" : findMovieByTitle,
             "findUserByCredentials" : findUserByCredentials,
-            "updateUser" : updateUser,
+            "findNowPlayingMovies" : findNowPlayingMovies,
             "deleteUser" : deleteUser,
             "findMovieTrailerById" : findMovieTrailerById
         };
@@ -26,14 +27,17 @@
         function findAllMovies() {
             return $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=0c8d5deeeea6dbe92c81212ab98f4b40&language=en-US&page=1");
         }
+        function findUpcomingMovies() {
+            return $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=0c8d5deeeea6dbe92c81212ab98f4b40&language=en-US&page=1");
+        }
         function findMovieByTitle(title) {
             return $http.get("/api/movie?title="+title);
         }
         function findUserByCredentials(username, password) {
             return $http.get("/api/user?username="+username+"&password="+password);
         }
-        function updateUser(userId, newUser){
-            return $http.put("/api/user/"+userId, newUser);
+        function findNowPlayingMovies(){
+            return $http.get("/api/movie");
         }
         function deleteUser(userId) {
             return $http.delete('/api/user/'+userId);

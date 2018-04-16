@@ -34,7 +34,7 @@ public class MovieService {
 	}
 	
 	@GetMapping("/api/movie")
-	public Iterable<Movie> findAllUsers(@RequestParam(name = "title", required = false) String title) {
+	public Iterable<Movie> findAllMovies(@RequestParam(name = "title", required = false) String title) {
 		if (title != null) {
 			return movieRepository.findMovieByMovieName(title);
 		} 
