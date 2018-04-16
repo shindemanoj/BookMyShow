@@ -1,8 +1,6 @@
 package com.bookmyshow.repositories;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.*;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.repository.CrudRepository;
 
 import com.bookmyshow.models.Theatre;
 

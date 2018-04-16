@@ -1,17 +1,17 @@
 (function() {
     angular
         .module("BookMyShow")
-        .factory("MovieService", MovieService);
+        .factory("MovieShowService", MovieShowService);
 
-    function MovieService($http) {
+    function MovieShowService($http) {
 
         var api = {
-            "createMovie"   : createMovie,
-            "findAllMovies" : findAllMovies,
+            "createMovieShows"   : createMovieShows,
+            "findMoviesForTheatre" : findMoviesForTheatre,
             "findMovieByTitle" : findMovieByTitle,
             "findUserByCredentials" : findUserByCredentials,
             "updateUser" : updateUser,
-            "deleteUser" : deleteUser,
+            "deleteMoviesForTheatre" : deleteMoviesForTheatre,
             "findMovieTrailerById" : findMovieTrailerById
         };
         return api;
@@ -20,11 +20,11 @@
         	return $http.get("https://api.themoviedb.org/3/movie/"+movieId+"/videos?api_key=0c8d5deeeea6dbe92c81212ab98f4b40&language=en-US");
         }
         
-        function createMovie(newMovie) {
-            return $http.post("/api/movie", newMovie);
+        function createMovieShows(movieId, theatreId) {
+            return $http.post("/api/movie/"+movieId+"/theatre/"+theatreId+"/movieshow");
         }
-        function findAllMovies() {
-            return $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=0c8d5deeeea6dbe92c81212ab98f4b40&language=en-US&page=1");
+        function findMoviesForTheatre(theatreId) {
+            return $http.get("/api/theatre/"+theatreId+"/movie");
         }
         function findMovieByTitle(title) {
             return $http.get("/api/movie?title="+title);
@@ -35,8 +35,8 @@
         function updateUser(userId, newUser){
             return $http.put("/api/user/"+userId, newUser);
         }
-        function deleteUser(userId) {
-            return $http.delete('/api/user/'+userId);
+        function deleteMoviesForTheatre(movieId, theatreId) {
+            return $http.delete("/api/theatre/"+theatreId +"/movie/"+movieId);
         }
     }
 })();

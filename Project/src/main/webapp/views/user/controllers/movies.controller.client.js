@@ -16,7 +16,7 @@
 				var movies = results.results;
 				vm.movies = movies;
 			}).error(function(err) {
-				vm.error = 'user not found';
+				vm.error = 'Movies not found';
 			});
 		}
 		

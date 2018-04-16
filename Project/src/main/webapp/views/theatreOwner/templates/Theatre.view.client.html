@@ -23,36 +23,46 @@
 </nav>
 
 <div class="container">
-    <h1>Add Theatre</h1>
+	<h1>Add Theatre</h1>
 
-    <div ng-show="model.error" class="alert alert-danger" role="alert">
-        {{model.error}}
-    </div>
+	<div ng-show="model.error" class="alert alert-danger" role="alert">
+		{{model.error}}</div>
 
-    <div class="alert alert-success" ng-show="model.message" role="alert">
-        {{model.message}}
-    </div>
+	<div class="alert alert-success" ng-show="model.message" role="alert">
+		{{model.message}}</div>
+	<input ng-model="model.theatre.name" type="text" class="form-control"
+		placeholder="theatre name" /> <input
+		ng-model="model.theatre.location" type="text" class="form-control"
+		placeholder="theatre location" /> <input
+		ng-model="model.theatre.description" type="text" class="form-control"
+		placeholder="decscription"> <input
+		ng-model="model.theatre.phone" type="text" class="form-control"
+		placeholder="phone number"> <a
+		class="btn btn-primary btn-block"
+		ng-click="model.addTheatre(model.theatre)">Submit</a> <a
+		class="btn btn-info btn-block"
+		ng-click="model.updateTheatre(model.theatre)">Update</a> <a
+		class="btn btn-info btn-block" ng-click="model.addMovie()">Add
+		Movie</a> <a class="btn btn-danger  btn-block"
+		href="#/theatreOwner/profile/{{model.theatreOwnerId}}">Cancel</a>
+	<h3>Now Playing Movies</h3>
 
-    <input ng-model="model.theatre.name"
-           type="text"
-           class="form-control"
-           placeholder="theatre name"/>
-    <input ng-model="model.theatre.location"
-           type="text"
-           class="form-control"
-           placeholder="theatre location"/>
-    <input ng-model="model.theatre.description"
-           type="text"
-           class="form-control"
-           placeholder="decscription">
-    <input ng-model="model.theatre.phone"
-           type="text"
-           class="form-control"
-           placeholder="phone number">
-    <a class="btn btn-primary btn-block"
-       ng-click="model.addTheatre(model.theatre)">Submit</a>
-    <a class="btn btn-info btn-block"
-       ng-click="model.updateTheatre(model.theatre)">Update</a>
-    <a class="btn btn-danger  btn-block"
-       href="#/theatreOwner/profile/{{model.theatreOwnerId}}">Cancel</a>
+	<table ng-show="model.movies" class="table" id="TheatreTbl">
+		<thead class="thead-dark" style="background-color: white">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Movie Title</th>
+				<th scope="col">Delete</th>
+			</tr>
+		</thead>
+		<tbody id="TheatreBdy"
+			style="overflow-y: scroll; height: 200px; width: 100%;">
+			<tr ng-repeat="movie in model.movies">
+				<td>{{$index + 1}}</td>
+				<td>{{movie.title}}</td>
+				<td><a class="fa fa-remove button" ng-click="model.deleteMovie(movie.id, model.theatreId)" href=""></a></td>
+
+			</tr>
+		</tbody>
+	</table>
 </div>

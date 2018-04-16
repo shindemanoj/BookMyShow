@@ -1,29 +1,50 @@
 package com.bookmyshow.models;
 
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class MovieShow {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String type;
+	private String movieName;
 	private int seatsAvailable;
-	private int showNo;
-	private String venue;
-	private Date date;
-	private Date time;
+	private int screenNumber;
+	private String theatreName;
+	private String theatreAdress;
+	private String date;
+	private String time;
+	
+	@ManyToOne
+	@JsonIgnore
+	Movie movie;
+	
+	@ManyToOne
+	@JsonIgnore
+	Theatre theatre;
 	
 	public MovieShow() {
 		super();
 	}
 	
-	public MovieShow(int id, String type, int seatsAvailable, int showNo, String venue, Date date, Date time) {
+	public MovieShow(String movieName, int seatsAvailable, int screenNumber, String theatreName, String theatreAdress,
+			String date, String time, Movie movie, Theatre theatre) {
 		super();
-		this.id = id;
-		this.type = type;
+		this.movieName = movieName;
 		this.seatsAvailable = seatsAvailable;
-		this.showNo = showNo;
-		this.venue = venue;
+		this.screenNumber = screenNumber;
+		this.theatreName = theatreName;
+		this.theatreAdress = theatreAdress;
 		this.date = date;
 		this.time = time;
+		setMovie(movie);
+		setTheatre(theatre);
 	}
 
 	public int getId() {
@@ -34,12 +55,12 @@ public class MovieShow {
 		this.id = id;
 	}
 
-	public String getType() {
-		return type;
+	public String getMovieName() {
+		return movieName;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
 	}
 
 	public int getSeatsAvailable() {
@@ -50,35 +71,66 @@ public class MovieShow {
 		this.seatsAvailable = seatsAvailable;
 	}
 
-	public int getShowNo() {
-		return showNo;
+	public int getScreenNumber() {
+		return screenNumber;
 	}
 
-	public void setShowNo(int showNo) {
-		this.showNo = showNo;
+	public void setScreenNumber(int screenNumber) {
+		this.screenNumber = screenNumber;
 	}
 
-	public String getVenue() {
-		return venue;
+	public String getTheatreName() {
+		return theatreName;
 	}
 
-	public void setVenue(String venue) {
-		this.venue = venue;
+	public void setTheatreName(String theatreName) {
+		this.theatreName = theatreName;
 	}
 
-	public Date getDate() {
+	public String getTheatreAdress() {
+		return theatreAdress;
+	}
+
+	public void setTheatreAdress(String theatreAdress) {
+		this.theatreAdress = theatreAdress;
+	}
+
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
-	public Date getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+		if(!movie.getMovieShows().contains(this)) {
+			movie.getMovieShows().add(this);
+		}
+	}
+
+	public Theatre getTheatre() {
+		return theatre;
+	}
+
+	public void setTheatre(Theatre theatre) {
+		this.theatre = theatre;
+		if (!theatre.getMovieShows().contains(this)) {
+			theatre.getMovieShows().add(this);
+		}
+	}
+	
 }

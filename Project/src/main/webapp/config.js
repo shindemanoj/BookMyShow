@@ -40,6 +40,11 @@
                 controller: 'addTheatreController',
                 controllerAs: 'model'
             })
+            .when("/theatreOwner/:toid/theatre/:tid/addMovie", {
+                templateUrl: 'views/movie/templates/add.movie.view.client.html',
+                controller: 'addMovieController',
+                controllerAs: 'model'
+            })
             .otherwise({
                 redirectTo: "/"
             });

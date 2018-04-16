@@ -65,7 +65,7 @@
             $location.url("/login");
         }
 
-        function removeTheatre(theatreOwnerId, ) {
+        function removeTheatre(theatreOwnerId) {
             TheatreOwnerService.deleteTheatreOwner(theatreOwnerId);
             $location.url("/login");
         }

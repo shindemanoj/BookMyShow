@@ -1,34 +1,43 @@
 package com.bookmyshow.models;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Movie {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String title;
 	private String trailerUrl;
-	private int stars;
-	private Date releaseDate;
-	private String imdbId;
+	private double stars;
+	private String releaseDate;
 	private String plot;
 	private String poster;
-	private String type;
-	private String cast;
+	private int voteCount;
+	
+	@OneToMany(mappedBy="movie")
+	@JsonIgnore
+	private List<MovieShow> movieShows = new ArrayList<>();
 	
 	public Movie() {
 		super();
 	}
-	
-	public Movie(String title, String trailerUrl, int stars, Date releaseDate, String imdbId, String plot,
-			String poster, String type, String cast) {
-		super();
-		this.title = title;
-		this.trailerUrl = trailerUrl;
-		this.stars = stars;
-		this.releaseDate = releaseDate;
-		this.imdbId = imdbId;
-		this.plot = plot;
-		this.poster = poster;
-		this.type = type;
-		this.cast = cast;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -47,28 +56,12 @@ public class Movie {
 		this.trailerUrl = trailerUrl;
 	}
 
-	public int getStars() {
-		return stars;
-	}
-
-	public void setStars(int stars) {
-		this.stars = stars;
-	}
-
-	public Date getReleaseDate() {
+	public String getReleaseDate() {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(Date releaseDate) {
+	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
-	}
-
-	public String getImdbId() {
-		return imdbId;
-	}
-
-	public void setImdbId(String imdbId) {
-		this.imdbId = imdbId;
 	}
 
 	public String getPlot() {
@@ -87,20 +80,28 @@ public class Movie {
 		this.poster = poster;
 	}
 
-	public String getType() {
-		return type;
+	public List<MovieShow> getMovieShows() {
+		return movieShows;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setMovieShows(List<MovieShow> movieShows) {
+		this.movieShows = movieShows;
 	}
 
-	public String getCast() {
-		return cast;
+	public double getStars() {
+		return stars;
 	}
 
-	public void setCast(String cast) {
-		this.cast = cast;
+	public void setStars(double stars) {
+		this.stars = stars;
 	}
 
+	public int getVoteCount() {
+		return voteCount;
+	}
+
+	public void setVoteCount(int voteCount) {
+		this.voteCount = voteCount;
+	}
+	
 }
