@@ -10,7 +10,6 @@
             "findAllMovies" : findAllMovies,
             "findUpcomingMovies" : findUpcomingMovies,
             "findMovieByTitle" : findMovieByTitle,
-            "findUserByCredentials" : findUserByCredentials,
             "findNowPlayingMovies" : findNowPlayingMovies,
             "deleteUser" : deleteUser,
             "findMovieTrailerById" : findMovieTrailerById
@@ -32,9 +31,6 @@
         }
         function findMovieByTitle(title) {
             return $http.get("/api/movie?title="+title);
-        }
-        function findUserByCredentials(username, password) {
-            return $http.get("/api/user?username="+username+"&password="+password);
         }
         function findNowPlayingMovies(){
             return $http.get("/api/movie");

@@ -9,7 +9,7 @@
             "createMovieShows"   : createMovieShows,
             "findMoviesForTheatre" : findMoviesForTheatre,
             "findMovieByTitle" : findMovieByTitle,
-            "findUserByCredentials" : findUserByCredentials,
+            "getMovieShows" : getMovieShows,
             "updateUser" : updateUser,
             "deleteMoviesForTheatre" : deleteMoviesForTheatre,
             "findMovieTrailerById" : findMovieTrailerById
@@ -29,8 +29,8 @@
         function findMovieByTitle(title) {
             return $http.get("/api/movie?title="+title);
         }
-        function findUserByCredentials(username, password) {
-            return $http.get("/api/user?username="+username+"&password="+password);
+        function getMovieShows(movieId, date) {
+            return $http.get("/api/movie/"+movieId+"/movieshow/"+ date);
         }
         function updateUser(userId, newUser){
             return $http.put("/api/user/"+userId, newUser);

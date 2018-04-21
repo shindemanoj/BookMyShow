@@ -70,6 +70,11 @@
                 controller: 'adminController',
                 controllerAs: 'model'
             })
+            .when("/user/:uid/movie/:movieId/movieshow", {
+                templateUrl: 'views/movieshow/templates/movie.show.view.client.html',
+                controller: 'movieShowController',
+                controllerAs: 'model'
+            })
             .otherwise({
                 redirectTo: "/"
             });

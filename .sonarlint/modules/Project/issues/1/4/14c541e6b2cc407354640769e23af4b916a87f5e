@@ -1,0 +1,7 @@
+
+`squid:S3655+"4Call "movie.isPresent()" before accessing the value.(Ÿ‡—98ò‰Ñ¯®,H”RMAJORZBUG
+csquid:S3655f"6Call "theater.isPresent()" before accessing the value.(Ÿ¦è÷8ÒÑ‹â¬,H†RMAJORZBUG
+asquid:S3655r"4Call "movie.isPresent()" before accessing the value.(àĞ8¨„·ã¬,H„RMAJORZBUG
+asquid:S36557"4Call "movie.isPresent()" before accessing the value.(àĞ8İøÆİ¬,H…RMAJORZBUG
+qsquid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8€î¯®,H´RMINORZ
+CODE_SMELL

@@ -1,19 +1,11 @@
 
-€javascript:S2814"BRename "vm" as this name is already used in declaration at line 5.(ý¡³Ñûÿÿÿÿ8®·¨À¬,HÞ
-RMAJORZ
+javascript:S1854
+"ARemove this useless assignment to local variable "theatreOwnerId"(°éÔÞüÿÿÿÿ8®·¨À¬,HŠRMAJORZ
 CODE_SMELL
-†javascript:UnusedVariable"?Remove the declaration of the unused 'theatreOwnerId' variable.(°éÔÞüÿÿÿÿ8®·¨À¬,Hß
-RMINORZ
+†javascript:UnusedVariable
+"?Remove the declaration of the unused 'theatreOwnerId' variable.(°éÔÞüÿÿÿÿ8®·¨À¬,H‹RMINORZ
 CODE_SMELL
-ajavascript:UnusedVariable!"Remove unused function 'login'.(ý—Ë¸8®·¨À¬,Hà
-RMINORZ
+javascript:UnusedVariableB"8Remove the declaration of the unused 'promise' variable.(ýÕÊÄýÿÿÿÿ8ïÚ¤Þ¬,HÝRMINORZ
 CODE_SMELL
-zjavascript:S1854	"<Remove this useless assignment to local variable "theatreId"(Î³æùÿÿÿÿ8®·¨À¬,Hã
-RMAJORZ
-CODE_SMELL
-javascript:UnusedVariable	":Remove the declaration of the unused 'theatreId' variable.(Î³æùÿÿÿÿ8®·¨À¬,Hâ
-RMINORZ
-CODE_SMELL
-javascript:S1854"ARemove this useless assignment to local variable "theatreOwnerId"(°éÔÞüÿÿÿÿ8®·¨À¬,Hä
-RMAJORZ
+xjavascript:S1854B":Remove this useless assignment to local variable "promise"(ýÕÊÄýÿÿÿÿ8ïÚ¤Þ¬,HÞRMAJORZ
 CODE_SMELL

@@ -1,0 +1,7 @@
+
+}squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ˆ³»ÌÿÿÿÿÿHúRMAJORZ
+CODE_SMELL
+asquid:S3655$";Call "theatreOwner.isPresent()" before accessing the value.(±¼—ÂHûRMAJORZBUG
+]squid:UselessImportCheck
+"Remove this duplicated import.(¶ÐïœùÿÿÿÿHüRMINORZ
+CODE_SMELL

@@ -11,4 +11,6 @@ public interface MovieShowRepository extends CrudRepository<MovieShow, Integer>{
 	Iterable<MovieShow> findMovieShowsByTheatreAndMovie(@Param("theatreName") String theatreName, @Param("movieName") String movieName);
 	@Query("SELECT ms FROM MovieShow ms WHERE ms.theatreName=:theatreName")
 	Iterable<MovieShow> findMovieShowsByTheatre(@Param("theatreName") String theatreName);
+	@Query("SELECT ms FROM MovieShow ms WHERE ms.movieName=:movieName AND ms.date=:date")
+	Iterable<MovieShow> findMovieShowsByMovieAndDate(@Param("movieName") String movieName, @Param("date") String date);
 }

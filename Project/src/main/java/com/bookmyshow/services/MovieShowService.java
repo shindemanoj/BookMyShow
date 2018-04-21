@@ -1,7 +1,6 @@
 package com.bookmyshow.services;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
@@ -35,15 +34,16 @@ public class MovieShowService {
 	@Autowired
 	MovieRepository movieRepository;
 
-	// @GetMapping("/api/movies")
-	// public Iterable<User> findAllUsers() {
-	// if (username != null && password != null) {
-	// return userRepository.findUserByCredentials(username, password);
-	// } else if (username != null) {
-	// return userRepository.findUserByUsername(username);
-	// }
-	// return userRepository.findAll();
-	// }
+	 @GetMapping("/api/movie/{movieId}/movieshow/{date}")
+	 public Set<Theatre> findMovieShowsForAMovie(@PathVariable("movieId") int movieId, @PathVariable("date") String selectedDate) {
+		 Set<Theatre> theatres = new HashSet<>();
+		 Optional<Movie> movie = movieRepository.findById(movieId);
+		 List<MovieShow> movieShows = (List<MovieShow>) movieShowRepository.findMovieShowsByMovieAndDate(movie.get().getTitle(), selectedDate);
+		 for(MovieShow show:movieShows) {
+			 theatres.add(show.getTheatre());
+		 }
+	 return theatres;
+	 }
 
 	@PostMapping("/api/movie/{movieId}/theatre/{theatreId}/movieshow")
 	public List<MovieShow> createMovieShows(@PathVariable("movieId") int movieId,
@@ -62,8 +62,7 @@ public class MovieShowService {
 	}
 
 	private void createMovieShows(Movie movie, Theatre theatre) throws ParseException {
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date startDate = formatter.parse(movie.getReleaseDate());
+		Date startDate = new Date();
 		Date endDate = addDays(startDate, 7);
 		LocalDate start = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		LocalDate end = endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -116,6 +115,7 @@ public class MovieShowService {
 		for(MovieShow ms: movieShows) {
 			movieShowRepository.delete(ms);
 		}
+		movieRepository.deleteById(movieId);;
 	}
 
 }
