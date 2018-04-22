@@ -1,7 +1,9 @@
 
-`squid:S3655+"4Call "movie.isPresent()" before accessing the value.(Ÿ‡—98ò‰Ñ¯®,H”RMAJORZBUG
-csquid:S3655f"6Call "theater.isPresent()" before accessing the value.(Ÿ¦è÷8ÒÑ‹â¬,H†RMAJORZBUG
-asquid:S3655r"4Call "movie.isPresent()" before accessing the value.(àĞ8¨„·ã¬,H„RMAJORZBUG
-asquid:S36557"4Call "movie.isPresent()" before accessing the value.(àĞ8İøÆİ¬,H…RMAJORZBUG
-qsquid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8€î¯®,H´RMINORZ
+fsquid:S36555"4Call "movie.isPresent()" before accessing the value.(„Âıÿÿÿÿ8¨„·ã¬,H·RMAJORZBUG
+bsquid:S3655™"4Call "movie.isPresent()" before accessing the value.(àĞ8ò‰Ñ¯®,HµRMAJORZBUG
+dsquid:S3655"6Call "theater.isPresent()" before accessing the value.(Ÿ¦è÷8ÒÑ‹â¬,H¸RMAJORZBUG
+asquid:S3655`"4Call "movie.isPresent()" before accessing the value.(àĞ8İøÆİ¬,H¹RMAJORZBUG
+asquid:S3655S"4Call "movie.isPresent()" before accessing the value.(Şşøİ8’ôŒÓ®,HâRMAJORZBUG
+jsquid:S3655F"8Call "movieShow.isPresent()" before accessing the value.(±Í€éøÿÿÿÿ8ÑÚ¥Û®,H¯-RMAJORZBUG
+Ä%squid:RedundantThrowsDeclarationCheckk"qRemove the declaration of thrown exception 'java.text.ParseException', as it cannot be thrown from method's body.(Ÿ™µëşÿÿÿÿ8ŒÉŒÎ®,HRMINORZ
 CODE_SMELL

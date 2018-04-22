@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class User extends Person {
 
-	@ManyToMany
-	@JoinTable(name = "USER_MOVIESHOW", joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "MOVIESHOW_ID", referencedColumnName = "ID"))
+	@OneToMany(mappedBy="user")
 	@JsonIgnore
-	private List<MovieShow> movieShows;
+	private List<MovieTicket> movieTickets;
 
 	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
 	@JsonIgnore
@@ -48,18 +47,14 @@ public class User extends Person {
 		super();
 	}
 
-	public List<MovieShow> getMovieShows() {
-		return movieShows;
+	public List<MovieTicket> getMovieTickets() {
+		return movieTickets;
 	}
 
-	public void setMovieShows(List<MovieShow> movieShows) {
-		this.movieShows = movieShows;
-	}
-
-	public void addMovieShow(MovieShow movieShow) {
-		this.movieShows.add(movieShow);
-		if (!movieShow.getUsers().contains(this)) {
-			movieShow.getUsers().add(this);
+	public void setMovieTicket(MovieTicket movieTicket) {
+		this.movieTickets.add(movieTicket);
+		if(movieTicket.getUser() != this) {
+			movieTicket.setUser(this);
 		}
 	}
 

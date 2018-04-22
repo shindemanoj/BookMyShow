@@ -3,6 +3,7 @@ package com.bookmyshow.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.bookmyshow.models.MovieTicket;
 import com.bookmyshow.models.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -66,5 +67,11 @@ public class UserService {
 	public List<User> getUsersFollowed(@PathVariable("userId") int id) {
 		Optional<User> user = userRepository.findById(id);
 		return user.get().getChildren();
+	}
+
+	@GetMapping("/api/user/{userId}/ticket")
+	public List<MovieTicket> getUserTickets(@PathVariable("userId") int id) {
+		Optional<User> user = userRepository.findById(id);
+		return user.get().getMovieTickets();
 	}
 }

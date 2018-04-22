@@ -16,9 +16,14 @@
             "getReviews": getReviews,
             "follows": follows,
             "getUsersFollowed" : getUsersFollowed
+            "getTickets": getTickets
         };
         return api;
-
+        
+        function getTickets(userId) {
+            return $http.get("/api/user/"+userId+"/ticket");
+        }
+        
         function getReviews(userId) {
             return $http.get("/api/user/"+userId+"/getReviews");
         }

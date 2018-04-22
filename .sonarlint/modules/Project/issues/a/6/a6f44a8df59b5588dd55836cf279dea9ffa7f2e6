@@ -1,11 +1,11 @@
 
-javascript:S1854
-"ARemove this useless assignment to local variable "theatreOwnerId"(°éÔŞüÿÿÿÿ8®·¨À¬,HŠRMAJORZ
+xjavascript:S1854B":Remove this useless assignment to local variable "promise"(ıÕÊÄıÿÿÿÿ8ïÚ¤Ş¬,H„RMAJORZ
 CODE_SMELL
 †javascript:UnusedVariable
-"?Remove the declaration of the unused 'theatreOwnerId' variable.(°éÔŞüÿÿÿÿ8®·¨À¬,H‹RMINORZ
+"?Remove the declaration of the unused 'theatreOwnerId' variable.(°éÔŞüÿÿÿÿ8®·¨À¬,H…RMINORZ
 CODE_SMELL
-javascript:UnusedVariableB"8Remove the declaration of the unused 'promise' variable.(ıÕÊÄıÿÿÿÿ8ïÚ¤Ş¬,HİRMINORZ
+javascript:UnusedVariableB"8Remove the declaration of the unused 'promise' variable.(ıÕÊÄıÿÿÿÿ8ïÚ¤Ş¬,H‡RMINORZ
 CODE_SMELL
-xjavascript:S1854B":Remove this useless assignment to local variable "promise"(ıÕÊÄıÿÿÿÿ8ïÚ¤Ş¬,HŞRMAJORZ
+javascript:S1854
+"ARemove this useless assignment to local variable "theatreOwnerId"(°éÔŞüÿÿÿÿ8®·¨À¬,H†RMAJORZ
 CODE_SMELL

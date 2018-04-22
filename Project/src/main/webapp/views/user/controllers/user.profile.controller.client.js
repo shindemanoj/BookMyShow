@@ -14,6 +14,7 @@
 			getUserDetails();
 			getReviews(userId);
 			getUsersFollowed(userId);
+			getTickets(userId);
 		}
 		init();
 
@@ -50,6 +51,16 @@
             promise.success(function (response) {
                 getReviews(userId);
             },function (error) {
+            });
+
+
+        function getTickets(userId) {
+            var promise=UserService
+                .getTickets(userId);
+            promise.success(function (response) {
+                vm.tickets=response;
+            },function (error) {
+
             });
 
         }

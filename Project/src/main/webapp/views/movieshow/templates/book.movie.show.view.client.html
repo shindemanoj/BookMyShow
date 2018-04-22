@@ -68,7 +68,7 @@
 				    name="selectedSeats[]"
 				    value="{{seat}}"
 				    ng-class="{red: booked.indexOf(seat) > -1}"
-				    ng-disabled="booked.indexOf(seat) > -1"
+				    ng-disabled="booked.seatNumber.indexOf(seat) > -1"
 				    ng-checked="selection.indexOf(seat) > -1"
 				    ng-click="toggleSelection(seat)">
 				</td>

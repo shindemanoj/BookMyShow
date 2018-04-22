@@ -12,12 +12,13 @@
             "getMovieShows" : getMovieShows,
             "getMovieShow" : getMovieShow,
             "getMovieShowDetails" : getMovieShowDetails,
-            "findMovieTrailerById" : findMovieTrailerById
+            "bookMovieShow" : bookMovieShow,
+            "getMovieTicketDetails": getMovieTicketDetails
         };
         return api;
         
-        function findMovieTrailerById(movieId){
-        	return $http.get("https://api.themoviedb.org/3/movie/"+movieId+"/videos?api_key=0c8d5deeeea6dbe92c81212ab98f4b40&language=en-US");
+        function getMovieTicketDetails(movieTicketId){
+        	return $http.get("api/ticket/"+ movieTicketId);
         }
         
         function createMovieShows(movieId, theatreId) {
@@ -37,6 +38,9 @@
         }
         function getMovieShowDetails(movieShowId) {
             return $http.get("/api/movieshow/"+movieShowId);
+        }	
+        function bookMovieShow(userId, movieShow, movieShowId) {
+            return $http.post("/api/user/"+userId+"/movieshow/"+movieShowId, movieShow);
         }
     }
 })();

@@ -56,7 +56,9 @@
 			MovieShowService.getMovieShowDetails(movieShowId).success(
 					function(movieShow) {
 						vm.movieShow = movieShow;
-						$scope.booked = movieShow.seatsBooked;
+						if(movieShow.seatsBooked != null){
+							$scope.booked = movieShow.seatsBooked;	
+						}
 					}).error(function(err) {
 				vm.error = 'Movie Show Details not found';
 			});
@@ -66,10 +68,12 @@
 			if ($scope.selection.length > 5) {
 				vm.error = "You cannot select more than 5 tickets!";
 			} else {
-				angular.extend($scope.booked, $scope.selection);
-				MovieShowService.bookMovieShow(vm.movieShow).success(
-						function(movieShows) {
-							vm.movieShows = movieShows;
+				vm.movieShow.seatsBooked = $scope.selection;
+				delete vm.movieShow.id;
+				MovieShowService.bookMovieShow(vm.userId, vm.movieShow, vm.movieShowId).success(
+						function(movieTicket) {
+							$location.url('/user/' + userId + '/movie/' + movie.id + '/movieShow/'
+									+ vm.movieShowId + '/ticket/' + movieTicket.id);
 						}).error(function(err) {
 					vm.error = 'Movie Shows not found';
 				});

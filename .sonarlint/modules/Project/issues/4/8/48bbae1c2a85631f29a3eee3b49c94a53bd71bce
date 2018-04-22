@@ -1,5 +1,4 @@
 
-„squid:CommentedOutCodeLine-"<This block of commented-out lines of code should be removed.(·—–ºýÿÿÿÿ8ØýáÖ¬,H’RMAJORZ
-CODE_SMELL
-squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(®»¾8ÎÎãª,H“RMAJORZ
+asquid:S3655:"4Call "movie.isPresent()" before accessing the value.(É£ŸÉ8Í°ôÜ®,Hâ-RMAJORZBUG
+squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(®»¾8ÎÎãª,H’RMAJORZ
 CODE_SMELL
