@@ -15,7 +15,7 @@ public class Person {
 	private String email;
 	private Date dob;
 	private String phone;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "person")
 	private Address address;
 
 	public Person() {

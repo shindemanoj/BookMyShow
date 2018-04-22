@@ -76,7 +76,7 @@
 				MovieShowService.bookMovieShow(vm.userId, vm.movieShow, vm.movieShowId).success(
 						function(movieTicket) {
 							if(movieTicket != null){
-								$location.url('/user/' + vm.userId + '/movie/' + vm.movie.id + '/movieShow/'
+								$location.url('/user/' + vm.userId + '/movie/' + vm.movieId + '/movieShow/'
 										+ vm.movieShowId + '/ticket/' + movieTicket.id);	
 							}
 							else{
