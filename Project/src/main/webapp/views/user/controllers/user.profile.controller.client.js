@@ -1,16 +1,19 @@
 (function() {
 	angular.module("BookMyShow").controller("userProfileController", userProfileController);
 
-	function userProfileController($location, UserService, $routeParams) {
+	function userProfileController($location, UserService, $routeParams, ReviewService) {
 		var vm = this;
 		var userId = $routeParams['userId'];
 		vm.userId = userId;
-        vm.getReviews=getReviews;
         vm.reviews=null;
+        vm.getReviews=getReviews;
+        vm.deleteReview= deleteReview;
+        vm.getUsersFollowed = getUsersFollowed;
 		
 		function init() {
 			getUserDetails();
-			getReviews(userId)
+			getReviews(userId);
+			getUsersFollowed(userId);
 		}
 		init();
 
@@ -31,6 +34,24 @@
             },function (error) {
 
             });
+        }
+
+        function getUsersFollowed(userId) {
+            var promise=UserService
+                .getUsersFollowed(userId).success(function (response) {
+                vm.following=response;
+            },function (error) {
+
+            });
+        }
+
+        function deleteReview(reviewId) {
+            var promise=ReviewService.deleteUserReview(reviewId);
+            promise.success(function (response) {
+                getReviews(userId);
+            },function (error) {
+            });
+
         }
 	}
 })();

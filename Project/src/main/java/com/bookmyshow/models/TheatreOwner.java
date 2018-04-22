@@ -50,8 +50,8 @@ public class TheatreOwner extends Person {
 		}
 	}
 
-	public void setTheatres(List<Theatre> theatres) {
-		this.theatres = theatres;
-	}
+//	public void setTheatres(List<Theatre> theatres) {
+//		this.theatres = theatres;
+//	}
 
 }

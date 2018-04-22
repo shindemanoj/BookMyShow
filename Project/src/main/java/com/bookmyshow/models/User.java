@@ -16,9 +16,25 @@ public class User extends Person {
 	@JsonIgnore
 	private List<MovieShow> movieShows;
 
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Review> reviews = new ArrayList<>();
+
+	@ManyToMany (mappedBy="children")
+	@JsonIgnore
+	private List<User> parent;
+
+
+	@ManyToMany
+	@JoinTable(name="follows",
+			joinColumns=@JoinColumn(name="follower_ID",
+					referencedColumnName="ID"),
+			inverseJoinColumns=@JoinColumn(name=
+					"follows_ID", referencedColumnName="ID"))
+	@JsonIgnore
+	private List<User> children;
+
+
 
 	public List<Review> getReviews() {
 		return reviews;
@@ -47,4 +63,36 @@ public class User extends Person {
 		}
 	}
 
+	public List<User> getParent() {
+		return parent;
+	}
+
+	public void setParent(List<User> parent) {
+		this.parent = parent;
+	}
+
+	public List<User> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<User> children) {
+		this.children = children;
+	}
+
+	public void follows
+			(User user) {
+		this.children.add(user);
+		if(!user.getParent().contains(this)) {
+			user.getParent().add(this);
+		}
+	}
+
+	public void followedBy(User user) {
+		this.parent.add(user);
+		if(!user.getChildren()
+				.contains(this)) {
+			user.getChildren()
+					.add(this);
+		}
+	}
 }

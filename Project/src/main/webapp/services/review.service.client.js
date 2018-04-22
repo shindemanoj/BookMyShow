@@ -9,7 +9,7 @@
             // "findTheatreById" : findTheatreById,
             // "findTheatreForTheatreOwner" : findTheatreForTheatreOwner,
             // "updateTheatre" : updateTheatre,
-            "deleteReview" : deleteReview,
+            "deleteUserReview" : deleteUserReview,
             "logout" : logout
         };
         return api;
@@ -29,8 +29,8 @@
         function updateTheatre(theatreId, newTheatre){
             return $http.put("/api/theatre/"+theatreId, newTheatre);
         }
-        function deleteReview(theatreId) {
-            return $http.delete('/api/theatre/'+theatreId);
+        function deleteUserReview(Id) {
+            return $http.delete('/api/review/'+Id);
         }
         function logout() {
             return $http.post("/api/logout");

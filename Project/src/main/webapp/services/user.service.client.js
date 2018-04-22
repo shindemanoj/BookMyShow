@@ -13,7 +13,9 @@
             "updateUser" : updateUser,
             "deleteUser" : deleteUser,
             "getAllUsers": getAllUsers,
-            "getReviews": getReviews
+            "getReviews": getReviews,
+            "follows": follows,
+            "getUsersFollowed" : getUsersFollowed
         };
         return api;
 
@@ -41,6 +43,12 @@
         }
         function getAllUsers() {
             return $http.get("/api/user");
+        }
+        function follows(followerId, userId){
+            return $http.put("/api/user/"+userId+"/followedBy/"+followerId);
+        }
+        function getUsersFollowed(userId) {
+            return $http.get("/api/user/"+userId+"/getUsersFollowed");
         }
     }
 })();
