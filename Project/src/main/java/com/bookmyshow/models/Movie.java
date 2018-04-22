@@ -3,11 +3,7 @@ package com.bookmyshow.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,7 +24,7 @@ public class Movie {
 	@JsonIgnore
 	private List<MovieShow> movieShows = new ArrayList<>();
 
-	@OneToMany(mappedBy="movie")
+	@OneToMany(mappedBy="movie", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Review> reviews = new ArrayList<>();
 	

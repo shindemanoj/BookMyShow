@@ -53,7 +53,22 @@ public class UserService {
 		Optional<User> user = userRepository.findById(id);
 		return user.get().getReviews();
 	}
-	
+
+	@PutMapping("/api/user/{uId}/followedBy/{fId}")
+	public void followedBy(@PathVariable("uId") int uId, @PathVariable("fId") int fId) {
+		Optional<User> parent = userRepository.findById(uId);
+		Optional<User> children = userRepository.findById(fId);
+		parent.get().followedBy(children.get());
+		userRepository.save(parent.get());
+	}
+
+
+	@GetMapping("/api/user/{userId}/getUsersFollowed")
+	public List<User> getUsersFollowed(@PathVariable("userId") int id) {
+		Optional<User> user = userRepository.findById(id);
+		return user.get().getChildren();
+	}
+
 	@GetMapping("/api/user/{userId}/ticket")
 	public List<MovieTicket> getUserTickets(@PathVariable("userId") int id) {
 		Optional<User> user = userRepository.findById(id);

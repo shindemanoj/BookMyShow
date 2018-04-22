@@ -2,17 +2,21 @@
     angular
         .module("BookMyShow")
         .controller("adminController", adminController);
-    function adminController($location, $scope, $routeParams, UserService, TheatreOwnerService, TheatreService, $rootScope, $route){
+    function adminController($location, $scope, $routeParams, UserService, TheatreOwnerService, TheatreService, MovieService, $rootScope, $route){
         var vm = this;
         vm.editId = $routeParams['uid'];
         vm.role=  $routeParams['role'];
         vm.allUsers=null;
+        vm.allMovies=null;
         vm.allTheatreOwners=null;
         vm.deleteUser = deleteUser;
         vm.deleteTheatreOwner=deleteTheatreOwner;
+        vm.deleteMovie =deleteMovie;
         vm.updateUser = updateUser;
         vm.redirectFunc= redirectFunc;
         vm.listUsers = listUsers;
+        vm.listMovies = listMovies;
+        vm.updateTheatreOwner = updateTheatreOwner;
         vm.logout = logout;
 
         function init() {
@@ -21,6 +25,7 @@
             }
             else {
                 listUsers();
+                listMovies();
             }
         }
         init();
@@ -42,8 +47,18 @@
                 });
         }
 
+        function listMovies() {
+            var promise = MovieService.findNowPlayingMovies();
+            promise.success(function (movies) {
+                    vm.allMovies = movies;
+                },
+                function (err) {
+                    vm.error = err;
+                });
+        }
+
         function redirectFunc(userId, role) {
-            $location.url("/admin/users/"+userId+"/edit/"+role);
+            $location.url("/admin/manage/"+userId+"/edit/"+role);
         }
 
 
@@ -58,8 +73,8 @@
                      });
 
              }
-             else if (role === "theatreOwner") {
-                 var promise = TheatreOwnerService.findTheatreOwnerById(editId);
+             else if (vm.role === "theatreOwner") {
+                 var promise = TheatreOwnerService.findTheatreOwnerById(vm.editId);
                  promise.success(function (user) {
                          vm.editUser =  user;
                      },
@@ -77,7 +92,7 @@
                         $route.reload();
                     });}
             else{
-                $location.redirect("/admin/users");//+vm.adminId);
+                $location.redirect("/admin/manage");//+vm.adminId);
             }
         }
 
@@ -88,7 +103,18 @@
                         $route.reload();
                     });}
             else{
-                $location.url("/admin/users");//+vm.adminId);
+                $location.url("/admin/manage");//+vm.adminId);
+            }
+        }
+
+        function deleteMovie(movieId) {
+            if(confirm('are you sure?')){
+                MovieService.deleteNowPlayingMovies(movieId)
+                    .then(function () {
+                        $route.reload();
+                    });}
+            else{
+                $location.url("/admin/manage");//+vm.adminId);
             }
         }
 
@@ -113,6 +139,20 @@
             var userId = vm.editId;
             UserService
                 .updateUser(userId, newUser)
+                .success(function (response) {
+                    init();
+                    vm.message = "user successfully updated";
+                })
+                .error(function () {
+                    vm.error = "unable to update user";
+                });
+        }
+
+        function updateTheatreOwner(newTheatreOwner) {
+
+            var userId = vm.editId;
+            TheatreOwnerService
+                .updateTheatreOwner(userId, newTheatreOwner)
                 .success(function (response) {
                     init();
                     vm.message = "user successfully updated";

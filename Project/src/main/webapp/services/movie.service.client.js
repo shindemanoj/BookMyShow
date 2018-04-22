@@ -13,7 +13,8 @@
             "findNowPlayingMovies" : findNowPlayingMovies,
             "deleteUser" : deleteUser,
             "findMovieTrailerById" : findMovieTrailerById,
-            "getReviews" : getReviews
+            "getReviews" : getReviews,
+            "deleteNowPlayingMovies" : deleteNowPlayingMovies
         };
         return api;
 
@@ -39,6 +40,9 @@
         }
         function findNowPlayingMovies(){
             return $http.get("/api/movie");
+        }
+        function deleteNowPlayingMovies(movieId){
+            return $http.delete("/api/movie/"+movieId);
         }
         function deleteUser(userId) {
             return $http.delete('/api/user/'+userId);

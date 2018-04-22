@@ -14,6 +14,8 @@
             "deleteUser" : deleteUser,
             "getAllUsers": getAllUsers,
             "getReviews": getReviews,
+            "follows": follows,
+            "getUsersFollowed" : getUsersFollowed,
             "getTickets": getTickets
         };
         return api;
@@ -46,6 +48,12 @@
         }
         function getAllUsers() {
             return $http.get("/api/user");
+        }
+        function follows(followerId, userId){
+            return $http.put("/api/user/"+userId+"/followedBy/"+followerId);
+        }
+        function getUsersFollowed(userId) {
+            return $http.get("/api/user/"+userId+"/getUsersFollowed");
         }
     }
 })();

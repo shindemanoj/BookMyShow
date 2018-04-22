@@ -53,3 +53,26 @@
             </tbody>
         </table>
     </div>
+
+    <br><br><br>
+
+<div class="container padding-top" id="MovieDiv"
+     style="height: 350px">
+    <table class="table" id="MovieTbl">
+        <thead class="thead-dark" style="background-color: white">
+        <tr>
+            <th scope="col">Movie Title</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody id="MovieBdy" style="overflow-y: scroll; height: 200px; width: 100%;">
+        <tr ng-repeat="movie in model.allMovies">
+            <td>{{movie.title}}</td>
+            <td>{{movie.releaseDate}}</td>
+            <!--<td><a class="fa fa-edit button" ng-click="model.redirectFunc(user.id, 'user')" href=""></a>-->
+               <td><a class="fa fa-remove button" ng-click="model.deleteMovie(movie.id)" href=""></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

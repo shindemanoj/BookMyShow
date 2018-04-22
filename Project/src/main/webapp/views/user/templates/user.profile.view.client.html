@@ -124,16 +124,21 @@
 	<div ng-repeat="review in model.reviews">
 		<div class="card bg-light" style="height: inherit">
 			<div class="card-body alert alert-default">
-				<div>
-					<label><font color="#a52a2a">{{review.movie.title}}</font>:</label>
-				</div>
-				<div>
-					<label class="cool-fonts"><font color="#4169e1">{{review.description}}</font></label><br>
-					<label class="text-muted"></label>
-				</div>
+				<div><label><font color="#a52a2a">{{review.movie.title}}</font>:</label> <a class="fa fa-remove button pull-right" ng-click="model.deleteReview(review.id)" href=""></a></div>
+				<div><label class="cool-fonts"><font color="#4169e1">{{review.description}}</font></label><br><label class="text-muted"></label></div>
 			</div>
 		</div>
 		<br>
 	</div>
+
+	<br>
+
+	<label>You are Following</label>
+
+	<div ng-repeat="following in model.following">
+		<label><a href="">{{following.username}}</a></label>
+	</div>
+
+
 
 </div>
