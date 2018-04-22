@@ -18,6 +18,8 @@ public class TheatreOwner extends Person {
 	@JsonIgnore
 	private List<Theatre> theatres;
 
+
+
 	public TheatreOwner() {
 
 		super();
@@ -46,6 +48,10 @@ public class TheatreOwner extends Person {
 		if (theatre.getTheatreOwner() != this) {
 			theatre.setTheatreOwner(this);
 		}
+	}
+
+	public void setTheatres(List<Theatre> theatres) {
+		this.theatres = theatres;
 	}
 
 }

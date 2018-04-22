@@ -5,9 +5,12 @@
 		var vm = this;
 		var userId = $routeParams['userId'];
 		vm.userId = userId;
+        vm.getReviews=getReviews;
+        vm.reviews=null;
 		
 		function init() {
 			getUserDetails();
+			getReviews(userId)
 		}
 		init();
 
@@ -19,5 +22,15 @@
 				vm.error = 'user not found';
 			});
 		}
+
+        function getReviews(userId) {
+            var promise=UserService
+                .getReviews(userId);
+            promise.success(function (response) {
+                vm.reviews=response;
+            },function (error) {
+
+            });
+        }
 	}
 })();

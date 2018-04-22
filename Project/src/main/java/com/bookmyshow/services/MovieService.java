@@ -1,5 +1,6 @@
 package com.bookmyshow.services;
 
+import com.bookmyshow.models.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bookmyshow.models.Movie;
 import com.bookmyshow.repositories.MovieRepository;
 import com.bookmyshow.repositories.TheatreRepository;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class MovieService {
@@ -48,4 +52,10 @@ public class MovieService {
 		movieRepository.deleteById(movieId);
 	}
 
+	@GetMapping("/api/movie/{movieId}/getReviews")
+	public List<Review> getAllReviews(@PathVariable("movieId") int id) {
+		Optional<Movie> movie = movieRepository.findById(id);
+		return movie.get().getReviews();
+
+	}
 }

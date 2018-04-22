@@ -35,6 +35,11 @@ public class Theatre {
 		this.description = description;
 	}
 
+
+	@OneToMany(mappedBy="theatre")
+	@JsonIgnore
+	private List<Review> reviews = new ArrayList<>();
+
 	public int getId() {
 		return id;
 	}
@@ -84,6 +89,14 @@ public class Theatre {
 
 	public void setMovieShows(List<MovieShow> movieShows) {
 		this.movieShows = movieShows;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 }
