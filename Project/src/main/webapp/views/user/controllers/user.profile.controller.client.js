@@ -11,6 +11,7 @@
         vm.deleteuser = deleteuser;
         vm.getTickets = getTickets;
         vm.getUsersFollowed = getUsersFollowed;
+        vm.updateUser = updateUser;
 
         function init() {
             getUserDetails();
@@ -76,5 +77,19 @@
                 });
 
             }
+
+        function updateUser(newUser) {
+
+            vm.message="";
+            vm.error="";
+            var promise=UserService.updateUser(userId, newUser);
+            promise.success(function (response) {
+
+                vm.message = "user successfully updated";
+            })
+                .error(function () {
+                    vm.error = "unable to update user";
+                });
+        }
         }
 })();
