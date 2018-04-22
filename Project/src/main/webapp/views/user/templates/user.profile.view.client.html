@@ -9,8 +9,8 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link" href="#/user/{{model.userId}}">Home
-				</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="#/user/{{model.userId}}">Home </a></li>
 				<li class="nav-item active"><a class="nav-link" href="">Profile
 						<span class="sr-only">(current)</span>
 				</a></li>
@@ -84,19 +84,51 @@
 
 
 	<a class="btn btn-danger btn-block"
-		ng-click="model.deleteuser(model.user.id)">Unregister</a>
-	<a class="btn btn-primary  btn-block"
+		ng-click="model.deleteuser(model.user.id)">Unregister</a> <a
+		class="btn btn-primary  btn-block"
 		ng-click="showDiv=false; model.updateuser(model.user)"
-		href="#/user/{{model.user.id}}/profile">Update</a>
-	<br>
+		href="#/user/{{model.user.id}}/profile">Update</a> 
+	
+	<br> <label>My Tickets</label>
 
-	<label>Your Reviews</label>
+	<div class="container-fluid"
+         style="height: 350px">
+        <table class="table" >
+            <thead class="thead-dark" style="background-color: white">
+            <tr>
+                <th scope="col">Booking Number</th>
+                <th scope="col">Theatre Name</th>
+                <th scope="col">Theatre Location</th>
+                <th scope="col">Movie Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Seats</th>
+            </tr>
+            </thead>
+            <tbody style="overflow-y: scroll; height: 200px; width: 100%;">
+            <tr ng-repeat="ticket in model.tickets">
+                <td>{{ticket.id}}</td>
+                <td>{{ticket.theatreName}}</td>
+                <td>{{ticket.theatreAdress}}</td>
+                <td>{{ticket.movieName}}</td>
+                <td>{{ticket.date}}</td>
+                <td>{{ticket.time}}</td>
+                <td>{{ticket.seatsBooked.toString()}}</td>
+            </tbody>
+        </table>
+    </div>
+	<br> <label>My Reviews</label>
 
 	<div ng-repeat="review in model.reviews">
 		<div class="card bg-light" style="height: inherit">
 			<div class="card-body alert alert-default">
-				<div><label><font color="#a52a2a">{{review.movie.title}}</font>:</label></div>
-				<div><label class="cool-fonts"><font color="#4169e1">{{review.description}}</font></label><br><label class="text-muted"></label></div>
+				<div>
+					<label><font color="#a52a2a">{{review.movie.title}}</font>:</label>
+				</div>
+				<div>
+					<label class="cool-fonts"><font color="#4169e1">{{review.description}}</font></label><br>
+					<label class="text-muted"></label>
+				</div>
 			</div>
 		</div>
 		<br>

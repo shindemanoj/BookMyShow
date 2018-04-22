@@ -80,6 +80,11 @@
                 controller: 'bookMovieShowController',
                 controllerAs: 'model'
             })
+            .when("/user/:userId/movie/:movieId/movieShow/:movieShowId/ticket/:ticketId", {
+                templateUrl: 'views/movieshow/templates/confirmation.view.client.html',
+                controller: 'confirmationController',
+                controllerAs: 'model'
+            })
             .otherwise({
                 redirectTo: "/"
             });

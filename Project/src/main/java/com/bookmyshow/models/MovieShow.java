@@ -1,13 +1,11 @@
 package com.bookmyshow.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -19,15 +17,12 @@ public class MovieShow {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String movieName;
-	private int seatsAvailable;
 	private int screenNumber;
 	private String theatreName;
 	private String theatreAdress;
 	private String date;
 	private String time;
-
-	@OneToMany(mappedBy = "movieShow")
-	private List<MovieShowSeat> seatsBooked = new ArrayList<>();
+	private String[] seatsBooked;
 
 	@ManyToOne
 	@JsonIgnore
@@ -37,19 +32,18 @@ public class MovieShow {
 	@JsonIgnore
 	Theatre theatre;
 
-	@ManyToMany(mappedBy = "movieShows")
+	@OneToMany(mappedBy="movieShow")
 	@JsonIgnore
-	private List<User> users;
-
+	private List<MovieTicket> movieTickets;
+	
 	public MovieShow() {
 		super();
 	}
 
-	public MovieShow(String movieName, int seatsAvailable, int screenNumber, String theatreName, String theatreAdress,
+	public MovieShow(String movieName, int screenNumber, String theatreName, String theatreAdress,
 			String date, String time, Movie movie, Theatre theatre) {
 		super();
 		this.movieName = movieName;
-		this.seatsAvailable = seatsAvailable;
 		this.screenNumber = screenNumber;
 		this.theatreName = theatreName;
 		this.theatreAdress = theatreAdress;
@@ -73,14 +67,6 @@ public class MovieShow {
 
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
-	}
-
-	public int getSeatsAvailable() {
-		return seatsAvailable;
-	}
-
-	public void setSeatsAvailable(int seatsAvailable) {
-		this.seatsAvailable = seatsAvailable;
 	}
 
 	public int getScreenNumber() {
@@ -145,26 +131,22 @@ public class MovieShow {
 		}
 	}
 
-	public List<MovieShowSeat> getSeatsBooked() {
+	public String[] getSeatsBooked() {
 		return seatsBooked;
 	}
 
-	public void setSeatsBooked(List<MovieShowSeat> seatsBooked) {
+	public void setSeatsBooked(String[] seatsBooked) {
 		this.seatsBooked = seatsBooked;
 	}
 
-	public List<User> getUsers() {
-		return users;
+	public List<MovieTicket> getMovieTickets() {
+		return movieTickets;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-
-	public void addUser(User user) {
-		this.users.add(user);
-		if (!user.getMovieShows().contains(this)) {
-			user.getMovieShows().add(this);
+	public void setMovieTicket(MovieTicket movieTicket) {
+		this.movieTickets.add(movieTicket);
+		if(movieTicket.getMovieShow() != this) {
+			movieTicket.setMovieShow(this);
 		}
 	}
 

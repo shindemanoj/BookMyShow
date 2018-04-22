@@ -10,20 +10,26 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmyshow.models.Movie;
 import com.bookmyshow.models.MovieShow;
+import com.bookmyshow.models.MovieTicket;
 import com.bookmyshow.models.Theatre;
+import com.bookmyshow.models.User;
 import com.bookmyshow.repositories.MovieRepository;
 import com.bookmyshow.repositories.MovieShowRepository;
+import com.bookmyshow.repositories.MovieTicketRepository;
 import com.bookmyshow.repositories.TheatreRepository;
+import com.bookmyshow.repositories.UserRepository;
 
 @RestController
 public class MovieShowService {
@@ -33,6 +39,10 @@ public class MovieShowService {
 	TheatreRepository theaterRepository;
 	@Autowired
 	MovieRepository movieRepository;
+	@Autowired
+	MovieTicketRepository movieTicketRepository;
+	@Autowired
+	UserRepository userRepository;
 
 	@GetMapping("/api/movie/{movieId}/movieshow/{date}")
 	public Set<Theatre> findMovieShowsForAMovie(@PathVariable("movieId") int movieId,
@@ -50,6 +60,18 @@ public class MovieShowService {
 	@GetMapping("/api/movieshow/{movieShowId}")
 	public Optional<MovieShow> getMovieShowsDetails(@PathVariable("movieShowId") int movieShowId) {
 		return movieShowRepository.findById(movieShowId);
+	}
+	
+	@PostMapping("/api/user/{userId}/movieshow/{movieShowId}")
+	public MovieTicket bookMovieShow(@PathVariable("userId") int userId, @PathVariable("movieShowId") int movieShowId, 
+			@RequestBody MovieTicket movieTicket) {
+		Optional<User> user = userRepository.findById(userId);
+		Optional<MovieShow> movieShow = movieShowRepository.findById(movieShowId);
+		movieShow.get().setSeatsBooked(Stream.of(movieShow.get().getSeatsBooked(), movieTicket.getSeatsBooked()).flatMap(Stream::of).toArray(String[]::new));
+		movieTicket.setUser(user.get());
+		movieTicket.setMovieShow(movieShow.get());
+		movieShowRepository.save(movieShow.get());
+		return movieTicketRepository.save(movieTicket);
 	}
 
 	@GetMapping("/api/movie/{movieId}/theatre/{theatreId}/date/{date}/time/{time}")
@@ -89,16 +111,16 @@ public class MovieShowService {
 		LocalDate end = endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		MovieShow show = null;
 		for (LocalDate date = start; date.isBefore(end); date = date.plusDays(1)) {
-			show = new MovieShow(movie.getTitle(), 25, 1, theatre.getName(), theatre.getLocation(), date.toString(),
+			show = new MovieShow(movie.getTitle(), 1, theatre.getName(), theatre.getLocation(), date.toString(),
 					"9", movie, theatre);
 			movieShowRepository.save(show);
-			show = new MovieShow(movie.getTitle(), 25, 1, theatre.getName(), theatre.getLocation(), date.toString(),
+			show = new MovieShow(movie.getTitle(), 1, theatre.getName(), theatre.getLocation(), date.toString(),
 					"12", movie, theatre);
 			movieShowRepository.save(show);
-			show = new MovieShow(movie.getTitle(), 25, 1, theatre.getName(), theatre.getLocation(), date.toString(),
+			show = new MovieShow(movie.getTitle(), 1, theatre.getName(), theatre.getLocation(), date.toString(),
 					"3", movie, theatre);
 			movieShowRepository.save(show);
-			show = new MovieShow(movie.getTitle(), 25, 1, theatre.getName(), theatre.getLocation(), date.toString(),
+			show = new MovieShow(movie.getTitle(), 1, theatre.getName(), theatre.getLocation(), date.toString(),
 					"6", movie, theatre);
 			movieShowRepository.save(show);
 		}
@@ -135,8 +157,8 @@ public class MovieShowService {
 		for (MovieShow ms : movieShows) {
 			movieShowRepository.delete(ms);
 		}
-		movieRepository.deleteById(movieId);
-		;
+		if(movie.get().getMovieShows().isEmpty())
+			movieRepository.deleteById(movieId);
 	}
 
 }

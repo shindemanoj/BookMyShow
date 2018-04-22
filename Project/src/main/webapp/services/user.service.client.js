@@ -13,10 +13,15 @@
             "updateUser" : updateUser,
             "deleteUser" : deleteUser,
             "getAllUsers": getAllUsers,
-            "getReviews": getReviews
+            "getReviews": getReviews,
+            "getTickets": getTickets
         };
         return api;
-
+        
+        function getTickets(userId) {
+            return $http.get("/api/user/"+userId+"/ticket");
+        }
+        
         function getReviews(userId) {
             return $http.get("/api/user/"+userId+"/getReviews");
         }

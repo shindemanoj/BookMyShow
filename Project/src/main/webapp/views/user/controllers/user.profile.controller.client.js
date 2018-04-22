@@ -10,7 +10,8 @@
 		
 		function init() {
 			getUserDetails();
-			getReviews(userId)
+			getReviews(userId);
+			getTickets(userId);
 		}
 		init();
 
@@ -28,6 +29,16 @@
                 .getReviews(userId);
             promise.success(function (response) {
                 vm.reviews=response;
+            },function (error) {
+
+            });
+        }
+        
+        function getTickets(userId) {
+            var promise=UserService
+                .getTickets(userId);
+            promise.success(function (response) {
+                vm.tickets=response;
             },function (error) {
 
             });
