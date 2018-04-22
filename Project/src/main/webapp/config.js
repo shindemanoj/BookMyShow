@@ -70,9 +70,14 @@
                 controller: 'adminController',
                 controllerAs: 'model'
             })
-            .when("/user/:uid/movie/:movieId/movieshow", {
+            .when("/user/:userId/movie/:movieId/movieShow", {
                 templateUrl: 'views/movieshow/templates/movie.show.view.client.html',
                 controller: 'movieShowController',
+                controllerAs: 'model'
+            })
+            .when("/user/:userId/movie/:movieId/movieShow/:movieShowId", {
+                templateUrl: 'views/movieshow/templates/book.movie.show.view.client.html',
+                controller: 'bookMovieShowController',
                 controllerAs: 'model'
             })
             .otherwise({

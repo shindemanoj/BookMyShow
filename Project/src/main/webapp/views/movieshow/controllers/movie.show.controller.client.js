@@ -8,14 +8,23 @@
 		vm.setMovieDetail = setMovieDetail;
 		vm.userId = $routeParams['userId'];
 		vm.movieId = $routeParams['movieId'];
+		vm.changeDate = changeDate;
+		vm.bookShow = bookShow;
 
 		function init() {
 			var date = new Date();
 			vm.selectedDate = (date.getMonth() + 1) + '/' + date.getDate();
 			vm.fullDate = getFullDate(date);
 			getDates();
+			getMovieShows(vm.movieId, vm.fullDate);
 		}
 		init();
+
+		function changeDate(fullDate, date) {
+			vm.selectedDate = date;
+			vm.fullDate = fullDate;
+			getMovieShows(vm.movieId, vm.fullDate);
+		}
 
 		function getDates() {
 			var dates = [];
@@ -36,13 +45,12 @@
 				});
 			}
 			vm.dates = dates;
-			getMovieShows(vm.movieId, vm.fullDate);
 		}
 
 		function getMovieShows(movieId, date) {
 			MovieShowService.getMovieShows(movieId, date).success(
-					function(theatres) {
-						console.log(theatres);
+					function(movieShows) {
+						vm.movieShows = movieShows;
 					}).error(function(err) {
 				vm.error = 'Movie Shows not found';
 			});
@@ -61,6 +69,16 @@
 		function setMovieDetail(movie) {
 			MovieDataService.setProperty(movie);
 			$location.url('/user/' + userId + '/movie/' + movie.id);
+		}
+
+		function bookShow(movieShowId, time) {
+			MovieShowService.getMovieShow(movieShowId, time,
+					vm.movieId, vm.fullDate).success(
+					function(selectedMovieShow) {
+						$location.url('/user/' + vm.userId + '/movie/' + vm.movieId + '/movieShow/'+selectedMovieShow.id);
+					}).error(function(err) {
+				vm.error = 'Movie Shows not found';
+			});
 		}
 	}
 })();

@@ -9,7 +9,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link" href="#/">Home
+				<li class="nav-item active"><a class="nav-link" href="#/user/{{model.userId}}">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
@@ -24,39 +24,43 @@
 <div class="container">
 
 	<!-- Page Heading -->
-	<h1 class="my-4">Movie Shows</h1>
+	<h1 class="my-4">Select Theater and Movie Show</h1>
 
 	<div class="row">
 		<div class="col-lg-2 col-sm-4 card" ng-repeat="obj in model.dates">
-			<div ng-if="model.selectedDate == obj.date" class="card-body  bg-danger">
+			<div ng-if="model.selectedDate == obj.date"
+				class="card-body  bg-danger">
 				<strong><a class="text-white" href="">{{obj.date}}</a></strong>
 			</div>
 			<div ng-if="model.selectedDate != obj.date" class="card-body">
-				<strong><a class="text-danger" href="">{{obj.date}}</a></strong>
+				<strong><a class="text-danger" ng-click="model.changeDate(obj.fullDate, obj.date)" href="">{{obj.date}}</a></strong>
 			</div>
 		</div>
 	</div>
-	<br><br><br>
-	<div class="row">
-		<div class="col-lg-4">Theatre Name</div>
+	<br>
+	<br>
+	<br>
+	<div ng-repeat="movieShow in model.movieShows" class="row">
+		<div class="col-lg-4">
+			<strong><a href="">{{movieShow.name}}</a></strong></div>
 		<div class="col-lg-2 card">
 			<div class="card-body">
-				<a href="">9.00 AM</a>
+				<a href="" ng-click="model.bookShow(movieShow.id, 9)">9.00 AM</a>
 			</div>
 		</div>
 		<div class="col-lg-2 card">
 			<div class="card-body">
-				<a href="">12.00 PM</a>
+				<a href="" ng-click="model.bookShow(movieShow.id, 12)">12.00 PM</a>
 			</div>
 		</div>
 		<div class="col-lg-2 card">
 			<div class="card-body">
-				<a href="">3.00 PM</a>
+				<a href="" ng-click="model.bookShow(movieShow.id, 3)">3.00 PM</a>
 			</div>
 		</div>
 		<div class="col-lg-2 card">
 			<div class="card-body">
-				<a href="">6.00 PM</a>
+				<a href="" ng-click="model.bookShow(movieShow.id, 6)">6.00 PM</a>
 			</div>
 		</div>
 	</div>

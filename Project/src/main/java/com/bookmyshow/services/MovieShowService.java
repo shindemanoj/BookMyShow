@@ -34,16 +34,37 @@ public class MovieShowService {
 	@Autowired
 	MovieRepository movieRepository;
 
-	 @GetMapping("/api/movie/{movieId}/movieshow/{date}")
-	 public Set<Theatre> findMovieShowsForAMovie(@PathVariable("movieId") int movieId, @PathVariable("date") String selectedDate) {
-		 Set<Theatre> theatres = new HashSet<>();
-		 Optional<Movie> movie = movieRepository.findById(movieId);
-		 List<MovieShow> movieShows = (List<MovieShow>) movieShowRepository.findMovieShowsByMovieAndDate(movie.get().getTitle(), selectedDate);
-		 for(MovieShow show:movieShows) {
-			 theatres.add(show.getTheatre());
-		 }
-	 return theatres;
-	 }
+	@GetMapping("/api/movie/{movieId}/movieshow/{date}")
+	public Set<Theatre> findMovieShowsForAMovie(@PathVariable("movieId") int movieId,
+			@PathVariable("date") String selectedDate) {
+		Set<Theatre> theatres = new HashSet<>();
+		Optional<Movie> movie = movieRepository.findById(movieId);
+		List<MovieShow> movieShows = (List<MovieShow>) movieShowRepository
+				.findMovieShowsByMovieAndDate(movie.get().getTitle(), selectedDate);
+		for (MovieShow show : movieShows) {
+			theatres.add(show.getTheatre());
+		}
+		return theatres;
+	}
+	
+	@GetMapping("/api/movieshow/{movieShowId}")
+	public Optional<MovieShow> getMovieShowsDetails(@PathVariable("movieShowId") int movieShowId) {
+		return movieShowRepository.findById(movieShowId);
+	}
+
+	@GetMapping("/api/movie/{movieId}/theatre/{theatreId}/date/{date}/time/{time}")
+	public MovieShow getMovieShow(@PathVariable("movieId") int movieId, @PathVariable("theatreId") int theatreId,
+			@PathVariable("date") String selectedDate, @PathVariable("time") String selectedTime) {
+		MovieShow result = null;
+		Optional<Movie> movie = movieRepository.findById(movieId);
+		Optional<Theatre> theatre = theaterRepository.findById(theatreId);
+		List<MovieShow> movieShows = (List<MovieShow>) movieShowRepository.findOne(movie.get().getTitle(),
+				theatre.get().getName(), selectedDate, selectedTime);
+		if (!movieShows.isEmpty()) {
+			result = movieShows.get(0);
+		}
+		return result;
+	}
 
 	@PostMapping("/api/movie/{movieId}/theatre/{theatreId}/movieshow")
 	public List<MovieShow> createMovieShows(@PathVariable("movieId") int movieId,
@@ -104,18 +125,18 @@ public class MovieShowService {
 	}
 
 	@DeleteMapping("/api/theatre/{theatreId}/movie/{movieId}")
-	public void findUserById(@PathVariable("theatreId") int theatreId,
-			@PathVariable("movieId") int movieId) {
+	public void findUserById(@PathVariable("theatreId") int theatreId, @PathVariable("movieId") int movieId) {
 		Optional<Movie> movie = movieRepository.findById(movieId);
 		Optional<Theatre> theater = theaterRepository.findById(theatreId);
 		Movie movieObj = movie.get();
 		Theatre theatreObj = theater.get();
 		List<MovieShow> movieShows = (List<MovieShow>) movieShowRepository
 				.findMovieShowsByTheatreAndMovie(theatreObj.getName(), movieObj.getTitle());
-		for(MovieShow ms: movieShows) {
+		for (MovieShow ms : movieShows) {
 			movieShowRepository.delete(ms);
 		}
-		movieRepository.deleteById(movieId);;
+		movieRepository.deleteById(movieId);
+		;
 	}
 
 }

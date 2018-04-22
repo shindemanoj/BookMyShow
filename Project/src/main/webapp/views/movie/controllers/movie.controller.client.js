@@ -16,7 +16,7 @@
 		init();
 
 		function displayMovieShows(movieId) {
-			$location.url('/user/' + userId + '/movie/' + movieId + '/movieshow');
+			$location.url('/user/' + userId + '/movie/' + movieId + '/movieShow');
 		}
 
 		function bookMovie() {

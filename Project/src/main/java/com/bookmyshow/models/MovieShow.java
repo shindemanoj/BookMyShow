@@ -1,10 +1,15 @@
 package com.bookmyshow.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,19 +25,26 @@ public class MovieShow {
 	private String theatreAdress;
 	private String date;
 	private String time;
-	
+
+	@OneToMany(mappedBy = "movieShow")
+	private List<MovieShowSeat> seatsBooked = new ArrayList<>();
+
 	@ManyToOne
 	@JsonIgnore
 	Movie movie;
-	
+
 	@ManyToOne
 	@JsonIgnore
 	Theatre theatre;
-	
+
+	@ManyToMany(mappedBy = "movieShows")
+	@JsonIgnore
+	private List<User> users;
+
 	public MovieShow() {
 		super();
 	}
-	
+
 	public MovieShow(String movieName, int seatsAvailable, int screenNumber, String theatreName, String theatreAdress,
 			String date, String time, Movie movie, Theatre theatre) {
 		super();
@@ -117,7 +129,7 @@ public class MovieShow {
 
 	public void setMovie(Movie movie) {
 		this.movie = movie;
-		if(!movie.getMovieShows().contains(this)) {
+		if (!movie.getMovieShows().contains(this)) {
 			movie.getMovieShows().add(this);
 		}
 	}
@@ -132,5 +144,21 @@ public class MovieShow {
 			theatre.getMovieShows().add(this);
 		}
 	}
-	
+
+	public List<MovieShowSeat> getSeatsBooked() {
+		return seatsBooked;
+	}
+
+	public void setSeatsBooked(List<MovieShowSeat> seatsBooked) {
+		this.seatsBooked = seatsBooked;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
 }

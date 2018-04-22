@@ -10,8 +10,8 @@
             "findMoviesForTheatre" : findMoviesForTheatre,
             "findMovieByTitle" : findMovieByTitle,
             "getMovieShows" : getMovieShows,
-            "updateUser" : updateUser,
-            "deleteMoviesForTheatre" : deleteMoviesForTheatre,
+            "getMovieShow" : getMovieShow,
+            "getMovieShowDetails" : getMovieShowDetails,
             "findMovieTrailerById" : findMovieTrailerById
         };
         return api;
@@ -32,11 +32,11 @@
         function getMovieShows(movieId, date) {
             return $http.get("/api/movie/"+movieId+"/movieshow/"+ date);
         }
-        function updateUser(userId, newUser){
-            return $http.put("/api/user/"+userId, newUser);
+        function getMovieShow(theatreId, time, movieId, date){
+            return $http.get("/api/movie/"+movieId+"/theatre/"+theatreId+"/date/"+date+"/time/"+time);
         }
-        function deleteMoviesForTheatre(movieId, theatreId) {
-            return $http.delete("/api/theatre/"+theatreId +"/movie/"+movieId);
+        function getMovieShowDetails(movieShowId) {
+            return $http.get("/api/movieshow/"+movieShowId);
         }
     }
 })();
