@@ -75,7 +75,7 @@
 				delete vm.movieShow.id;
 				MovieShowService.bookMovieShow(vm.userId, vm.movieShow, vm.movieShowId).success(
 						function(movieTicket) {
-							if(movieTicket != null){
+							if(movieTicket != ""){
 								$location.url('/user/' + vm.userId + '/movie/' + vm.movieId + '/movieShow/'
 										+ vm.movieShowId + '/ticket/' + movieTicket.id);	
 							}

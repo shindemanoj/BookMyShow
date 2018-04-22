@@ -35,7 +35,7 @@
                 controller: 'registerController',
                 controllerAs: 'model'
             })
-            .when("/movie/details", {
+            .when("/movie/:movieId/details", {
                 templateUrl: 'views/user/templates/home.details.view.client.html',
                 controller: 'homeDetailsController',
                 controllerAs: 'model'

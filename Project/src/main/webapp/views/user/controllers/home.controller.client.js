@@ -27,7 +27,7 @@
 		
 		function setMovieDetail(movie){
 			MovieDataService.setProperty(movie);
-			$location.url('/movie/details');
+			$location.url('/movie/'+movie.id+'/details');
 		}
 	}
 })();

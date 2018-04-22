@@ -9,12 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.bookmyshow.models.User;
+import com.bookmyshow.repositories.AddressRepository;
 import com.bookmyshow.repositories.UserRepository;
 
 @RestController
 public class UserService {
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	AddressRepository addressRepository;
 
 	@GetMapping("/api/user")
 	public Iterable<User> findAllUsers(@RequestParam(name = "username", required = false) String username,
@@ -29,6 +32,7 @@ public class UserService {
 
 	@PostMapping("/api/user")
 	public User createUser(@RequestBody User user) {
+		addressRepository.save(user.getAddress());
 		return userRepository.save(user);
 	}
 

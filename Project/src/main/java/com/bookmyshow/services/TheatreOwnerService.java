@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmyshow.models.Theatre;
 import com.bookmyshow.models.TheatreOwner;
+import com.bookmyshow.repositories.AddressRepository;
 import com.bookmyshow.repositories.TheatreOwnerRepository;
 import com.bookmyshow.repositories.TheatreRepository;
 
@@ -25,6 +26,9 @@ public class TheatreOwnerService {
 
     @Autowired
     TheatreRepository theatreRepository;
+    
+    @Autowired
+    AddressRepository addressRepository;
 
     @GetMapping("/api/theatreOwner")
     public Iterable<TheatreOwner> findAllThareOwners(@RequestParam(name = "username", required = false) String username,
@@ -39,6 +43,7 @@ public class TheatreOwnerService {
 
     @PostMapping("/api/theatreOwner")
     public TheatreOwner createThatreOwner(@RequestBody TheatreOwner theatreOwner) {
+    	addressRepository.save(theatreOwner.getAddress());
         return theatreOwnerRepository.save(theatreOwner);
     }
 
