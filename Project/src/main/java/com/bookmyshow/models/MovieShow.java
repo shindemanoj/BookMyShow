@@ -161,4 +161,11 @@ public class MovieShow {
 		this.users = users;
 	}
 
+	public void addUser(User user) {
+		this.users.add(user);
+		if (!user.getMovieShows().contains(this)) {
+			user.getMovieShows().add(this);
+		}
+	}
+
 }

@@ -28,5 +28,12 @@ public class User extends Person {
 	public void setMovieShows(List<MovieShow> movieShows) {
 		this.movieShows = movieShows;
 	}
-	
+
+	public void addMovieShow(MovieShow movieShow) {
+		this.movieShows.add(movieShow);
+		if (!movieShow.getUsers().contains(this)) {
+			movieShow.getUsers().add(this);
+		}
+	}
+
 }
