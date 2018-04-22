@@ -1,32 +1,24 @@
 package com.bookmyshow.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User extends Person {
-		
-		public User() {
-			super();
-		}
 
+	@ManyToMany
+	@JoinTable(name = "USER_MOVIESHOW", joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "MOVIESHOW_ID", referencedColumnName = "ID"))
+	@JsonIgnore
+	private List<MovieShow> movieShows;
 
-
-		@OneToMany(mappedBy="user")
-		@JsonIgnore
-		private List<Review> reviews = new ArrayList<>();
-
-		public User(int id, String firstName, String lastName, String username, String password, String email, Date dob, String phone) {
-			super(id, firstName, lastName, username, password, email, dob, phone);
-	
-		}
-
+	@OneToMany(mappedBy="user")
+	@JsonIgnore
+	private List<Review> reviews = new ArrayList<>();
 
 	public List<Review> getReviews() {
 		return reviews;
@@ -34,5 +26,17 @@ public class User extends Person {
 
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
+	}
+
+	public User() {
+		super();
+	}
+
+	public List<MovieShow> getMovieShows() {
+		return movieShows;
+	}
+
+	public void setMovieShows(List<MovieShow> movieShows) {
+		this.movieShows = movieShows;
 	}
 }

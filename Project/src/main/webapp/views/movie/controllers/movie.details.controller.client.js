@@ -8,12 +8,13 @@
 		vm.userId = userId;
 		var movieId = $routeParams['movieId'];
 		vm.movieId = movieId;
-		vm.userId = userId;
+
         vm.reviews=null;
         vm.review=null;
         vm.comment=null;
         vm.getReviews=getReviews;
         vm.postReview=postReview;
+        vm.displayMovieShows = displayMovieShows;
 
 		function init() {
 			vm.movie = MovieDataService.getProperty();
@@ -46,6 +47,10 @@
 
                 });
         }
+		
+		function displayMovieShows(movieId) {
+			$location.url('/user/' + userId + '/movie/' + movieId + '/movieShow');
+		}
 		
 		$scope.trustSrc = function(src) {
 		    return $sce.trustAsResourceUrl(src);
