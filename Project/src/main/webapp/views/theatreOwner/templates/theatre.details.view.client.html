@@ -1,56 +1,78 @@
 <!-- Navigation -->
 
 <style>
-	.cool-fonts{
-		font-family: 'Gochi Hand', cursive;
-		font-size:20px;
-	}
+    .cool-fonts {
+        font-family: 'Gochi Hand', cursive;
+        font-size: 20px;
+    }
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	<div class="container">
-		<a class="navbar-brand" href="#/">Book My Show</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarResponsive" aria-controls="navbarResponsive"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link" href="#/user/{{model.userId}}">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#/user/{{model.userId}}/profile">Profile</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#/">Contact</a></li>
-			</ul>
-		</div>
-	</div>
+    <div class="container">
+        <a class="navbar-brand" href="#/">Book My Show</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a class="nav-link" href="#/user/{{model.userId}}">Home
+                    <span class="sr-only">(current)</span>
+                </a></li>
+                <li class="nav-item"><a class="nav-link" href="#/user/{{model.userId}}/profile">Profile</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#/">Contact</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
 <!-- Page Content -->
 <div class="container">
-	<h1>Theatre Details</h1>
-	<br/><br/>
-	<div ng-show="model.error" class="alert alert-danger" role="alert">
-		{{model.error}}</div>
+    <h1>Theatre Details</h1>
+    <br/><br/>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
 
-	<div class="row">
-		<div class="col-md-6">
-			<div class="form-group">
-				<h5>Map and Directions:</h5>
-				<iframe width="100%" height="250px" class="embed-responsive-item"
-					ng-src={{model.source}} frameborder="0" allowfullscreen></iframe>
-			</div>
-		</div>
-		<div class="col-md-6">
-			<h3>Theater Name: {{model.theatre.name}}</h3>
-			<h4>Location: {{model.theatre.location}}</h4>
-			<h4>Description: {{model.theatre.details}}</h4>
-		</div>
-	</div>
-	
-	<br />
-	<div>
-		<h2>Reviews:</h2>
-	</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <h5>Map and Directions:</h5>
+                <iframe width="100%" height="250px" class="embed-responsive-item"
+                        ng-src={{model.source}} frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3>Theater Name: {{model.theatre.name}}</h3>
+            <h4>Location: {{model.theatre.location}}</h4>
+            <h4>Description: {{model.theatre.details}}</h4>
+        </div>
+    </div>
+
+    <br/>
+    <div>
+        <h2>Reviews:</h2>
+    </div>
+    <div><!--ng-show="model.userId"-->
+        <textarea class="form-control" rows="2" ng-model="model.review.description"></textarea>
+        <button ng-click="model.postReview(model.review)" class="form-control btn-details btn btn-block btn-success">
+            Post
+        </button>
+        <br>
+    </div>
+
+    <div ng-repeat="review in model.reviews">
+        <div class="card bg-light" style="height: inherit">
+            <div class="card-body alert alert-default">
+                <div><label>Reviewed By <font color="#a52a2a">{{review.user.username}}</font>:</label>
+                    <button id="follow" class="button-info pull-right" ng-click="model.follow(review.user.id)">Follow
+                    </button>
+                </div>
+                <div><label class="cool-fonts"><font color="#4169e1">{{review.description}}</font></label><br><label
+                        class="text-muted"></label></div>
+            </div>
+        </div>
+        <br>
+    </div>
 </div>

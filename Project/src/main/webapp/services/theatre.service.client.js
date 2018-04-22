@@ -10,11 +10,16 @@
             // "findTheatreForTheatreOwner" : findTheatreForTheatreOwner,
             "updateTheatre" : updateTheatre,
             "deleteTheatre" : deleteTheatre,
-            "findMoviesForTheatre" :findMoviesForTheatre
+            "findMoviesForTheatre" :findMoviesForTheatre,
+            "getReviews" : getReviews
             };
         return api;
 
-        
+
+        function getReviews(theatreId) {
+            return $http.get("/api/theatre/"+theatreId+"/getReviews");
+        }
+
         function findMoviesForTheatre(theatreId) {
             return $http.get("/api/theatre/"+theatreId+"/movie");
         }
