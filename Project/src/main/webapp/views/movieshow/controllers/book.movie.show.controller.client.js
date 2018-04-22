@@ -67,15 +67,23 @@
 		function bookTickets() {
 			if ($scope.selection.length > 5) {
 				vm.error = "You cannot select more than 5 tickets!";
+			}
+			else if($scope.selection.length == 0){
+				vm.error = "Please select atleast 1 ticket!";
 			} else {
 				vm.movieShow.seatsBooked = $scope.selection;
 				delete vm.movieShow.id;
 				MovieShowService.bookMovieShow(vm.userId, vm.movieShow, vm.movieShowId).success(
 						function(movieTicket) {
-							$location.url('/user/' + userId + '/movie/' + movie.id + '/movieShow/'
-									+ vm.movieShowId + '/ticket/' + movieTicket.id);
+							if(movieTicket != null){
+								$location.url('/user/' + vm.userId + '/movie/' + vm.movie.id + '/movieShow/'
+										+ vm.movieShowId + '/ticket/' + movieTicket.id);	
+							}
+							else{
+								vm.error = "Payment processing failed. Please check your balance.";
+							}
 						}).error(function(err) {
-					vm.error = 'Movie Shows not found';
+					vm.error = 'Error with booking. Please try again.';
 				});
 			}
 		}

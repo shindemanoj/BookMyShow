@@ -66,8 +66,20 @@ public class MovieShowService {
 	public MovieTicket bookMovieShow(@PathVariable("userId") int userId, @PathVariable("movieShowId") int movieShowId, 
 			@RequestBody MovieTicket movieTicket) {
 		Optional<User> user = userRepository.findById(userId);
+		if((user.get().getWallet()-movieTicket.getSeatsBooked().length) <= 0) {
+			user.get().setWallet(0);
+			userRepository.save(user.get());
+			return null;
+		}
+		user.get().setWallet(user.get().getWallet()-movieTicket.getSeatsBooked().length);
+		userRepository.save(user.get());
 		Optional<MovieShow> movieShow = movieShowRepository.findById(movieShowId);
-		movieShow.get().setSeatsBooked(Stream.of(movieShow.get().getSeatsBooked(), movieTicket.getSeatsBooked()).flatMap(Stream::of).toArray(String[]::new));
+		if(null == movieShow.get().getSeatsBooked()) {
+			movieShow.get().setSeatsBooked(movieTicket.getSeatsBooked());
+		}
+		else {
+			movieShow.get().setSeatsBooked(Stream.of(movieShow.get().getSeatsBooked(), movieTicket.getSeatsBooked()).flatMap(Stream::of).toArray(String[]::new));	
+		}
 		movieTicket.setUser(user.get());
 		movieTicket.setMovieShow(movieShow.get());
 		movieShowRepository.save(movieShow.get());

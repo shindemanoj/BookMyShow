@@ -1,4 +1,11 @@
 <!-- Navigation -->
+
+<style>
+	.cool-fonts{
+		font-family: 'Gochi Hand', cursive;
+		font-size:20px;
+	}
+</style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	<div class="container">
 		<a class="navbar-brand" href="#/">Book My Show</a>
@@ -9,11 +16,11 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="#/user/{{model.userId}}">Home <span class="sr-only">(current)</span>
+				<li class="nav-item active"><a class="nav-link" href="#/user/{{model.userId}}">Home
+						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="#/user/{{model.userId}}/profile">Profile</a></li>
+				<li class="nav-item"><a class="nav-link" href="#/user/{{model.userId}}/profile">Profile</a>
+				</li>
 				<li class="nav-item"><a class="nav-link" href="#/">Contact</a></li>
 			</ul>
 		</div>
@@ -22,11 +29,11 @@
 
 <!-- Page Content -->
 <div class="container">
+	<h1>Theatre Details</h1>
+	<br/><br/>
+	<div ng-show="model.error" class="alert alert-danger" role="alert">
+		{{model.error}}</div>
 
-	<!-- Page Heading -->
-	<h1 class="my-4">Thank you for Booking {{model.user.firstName}}.</h1>
-	<h3> You have been charged  {{model.movieTicket.seatsBooked.length}}$. You wallet balance is: {{model.user.wallet}}$</h3>
-	<br/>
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-group">
@@ -36,13 +43,14 @@
 			</div>
 		</div>
 		<div class="col-md-6">
-			<h2>Booking Number: {{model.movieTicket.id}}</h2>
-			<h3>Theater Name: {{model.movieTicket.theatreName}}</h3>
-			<h3>Movie Name: {{model.movieTicket.movieName}}</h3>
-			<h3>Date: {{model.movieTicket.date}}</h3>
-			<h3>Time: {{model.movieTicket.time}}</h3>
-			<h3>Seats: {{model.movieTicket.seatsBooked.toString()}}</h3>
+			<h3>Theater Name: {{model.theatre.name}}</h3>
+			<h4>Location: {{model.theatre.location}}</h4>
+			<h4>Description: {{model.theatre.details}}</h4>
 		</div>
 	</div>
+	
+	<br />
+	<div>
+		<h2>Reviews:</h2>
+	</div>
 </div>
-<!-- /.container -->

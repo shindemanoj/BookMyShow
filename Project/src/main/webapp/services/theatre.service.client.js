@@ -10,9 +10,8 @@
             // "findTheatreForTheatreOwner" : findTheatreForTheatreOwner,
             "updateTheatre" : updateTheatre,
             "deleteTheatre" : deleteTheatre,
-            "findMoviesForTheatre" :findMoviesForTheatre,
-            "logout" : logout
-        };
+            "findMoviesForTheatre" :findMoviesForTheatre
+            };
         return api;
 
         
@@ -34,9 +33,6 @@
         }
         function deleteTheatre(theatreId) {
             return $http.delete('/api/theatre/'+theatreId);
-        }
-        function logout() {
-            return $http.post("/api/logout");
         }
 
     }

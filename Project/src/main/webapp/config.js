@@ -85,6 +85,11 @@
                 controller: 'confirmationController',
                 controllerAs: 'model'
             })
+            .when("/user/:userId/movie/:movieId/theater/:thId/details", {
+                templateUrl: 'views/theatreOwner/templates/theatre.details.view.client.html',
+                controller: 'theatreDetailsController',
+                controllerAs: 'model'
+            })
             .otherwise({
                 redirectTo: "/"
             });

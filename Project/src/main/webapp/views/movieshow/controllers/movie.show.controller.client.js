@@ -10,6 +10,7 @@
 		vm.movieId = $routeParams['movieId'];
 		vm.changeDate = changeDate;
 		vm.bookShow = bookShow;
+		vm.getTheatreDetails = getTheatreDetails;
 
 		function init() {
 			var date = new Date();
@@ -19,7 +20,11 @@
 			getMovieShows(vm.movieId, vm.fullDate);
 		}
 		init();
-
+		
+		function getTheatreDetails(theatreId){
+			$location.url('/user/'+vm.userId+'/movie/'+vm.movieId+'/theater/'+theatreId+'/details');
+		}
+		
 		function changeDate(fullDate, date) {
 			vm.selectedDate = date;
 			vm.fullDate = fullDate;

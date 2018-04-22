@@ -10,7 +10,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User extends Person {
-
+	
+	private int wallet;
+	
 	@OneToMany(mappedBy="user")
 	@JsonIgnore
 	private List<MovieTicket> movieTickets;
@@ -40,6 +42,14 @@ public class User extends Person {
 		if(movieTicket.getUser() != this) {
 			movieTicket.setUser(this);
 		}
+	}
+
+	public int getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(int wallet) {
+		this.wallet = wallet;
 	}
 
 }

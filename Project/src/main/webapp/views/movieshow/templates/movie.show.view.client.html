@@ -24,7 +24,7 @@
 <div class="container">
 
 	<!-- Page Heading -->
-	<h1 class="my-4">Select Theater and Movie Show</h1>
+	<h3 class="my-4">Select Date</h3>
 
 	<div class="row">
 		<div class="col-lg-2 col-sm-4 card" ng-repeat="obj in model.dates">
@@ -39,10 +39,11 @@
 	</div>
 	<br>
 	<br>
+	<h3 class="my-4">Select Theater and Movie Show</h3>
 	<br>
 	<div ng-repeat="movieShow in model.movieShows" class="row">
 		<div class="col-lg-4">
-			<strong><a href="">{{movieShow.name}}</a></strong></div>
+			<strong><a href="" class="text-warning" ng-click="model.getTheatreDetails(movieShow.id)">{{movieShow.name}}</a></strong></div>
 		<div class="col-lg-2 card">
 			<div class="card-body">
 				<a href="" ng-click="model.bookShow(movieShow.id, 9)">9.00 AM</a>

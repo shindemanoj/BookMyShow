@@ -1,5 +1,0 @@
-
-rjavascript:UnusedVariable "8Remove the declaration of the unused 'promise' variable.(«òHËRMINORZ
-CODE_SMELL
-kjavascript:S1854 ":Remove this useless assignment to local variable "promise"(«òHÌRMAJORZ
-CODE_SMELL
