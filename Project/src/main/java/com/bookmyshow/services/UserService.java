@@ -1,7 +1,9 @@
 package com.bookmyshow.services;
 
+import java.util.List;
 import java.util.Optional;
 
+import com.bookmyshow.models.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,5 +47,9 @@ public class UserService {
 		return userRepository.save(newUser);
 	}
 
-
+	@GetMapping("/api/user/{userId}/getReviews")
+	public List<Review> getAllReviews(@PathVariable("userId") int id) {
+		Optional<User> user = userRepository.findById(id);
+		return user.get().getReviews();
+	}
 }

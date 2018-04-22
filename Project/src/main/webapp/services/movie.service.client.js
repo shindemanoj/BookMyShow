@@ -12,10 +12,15 @@
             "findMovieByTitle" : findMovieByTitle,
             "findNowPlayingMovies" : findNowPlayingMovies,
             "deleteUser" : deleteUser,
-            "findMovieTrailerById" : findMovieTrailerById
+            "findMovieTrailerById" : findMovieTrailerById,
+            "getReviews" : getReviews
         };
         return api;
-        
+
+        function getReviews(movieId) {
+            return $http.get("/api/movie/"+movieId+"/getReviews");
+        }
+
         function findMovieTrailerById(movieId){
         	return $http.get("https://api.themoviedb.org/3/movie/"+movieId+"/videos?api_key=0c8d5deeeea6dbe92c81212ab98f4b40&language=en-US");
         }

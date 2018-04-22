@@ -12,9 +12,14 @@
             "findUserByCredentials" : findUserByCredentials,
             "updateUser" : updateUser,
             "deleteUser" : deleteUser,
-            "getAllUsers": getAllUsers
+            "getAllUsers": getAllUsers,
+            "getReviews": getReviews
         };
         return api;
+
+        function getReviews(userId) {
+            return $http.get("/api/user/"+userId+"/getReviews");
+        }
 
         function createUser(newUser) {
             return $http.post("/api/user", newUser);

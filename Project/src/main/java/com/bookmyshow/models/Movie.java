@@ -27,6 +27,10 @@ public class Movie {
 	@OneToMany(mappedBy="movie")
 	@JsonIgnore
 	private List<MovieShow> movieShows = new ArrayList<>();
+
+	@OneToMany(mappedBy="movie")
+	@JsonIgnore
+	private List<Review> reviews = new ArrayList<>();
 	
 	public Movie() {
 		super();
@@ -86,6 +90,14 @@ public class Movie {
 
 	public void setMovieShows(List<MovieShow> movieShows) {
 		this.movieShows = movieShows;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 	public double getStars() {
