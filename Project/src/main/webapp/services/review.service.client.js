@@ -10,6 +10,7 @@
             // "findTheatreForTheatreOwner" : findTheatreForTheatreOwner,
             // "updateTheatre" : updateTheatre,
             "deleteUserReview" : deleteUserReview,
+            "createReviewTheatre" : createReviewTheatre,
             "logout" : logout
         };
         return api;
@@ -19,6 +20,12 @@
         function createReview(userId, movieId, Review) {
             return $http.post("/api/user/"+userId+"/movie/"+movieId, Review);
         }
+
+        function createReviewTheatre(userId, theatreId, Review) {
+            return $http.post("/api/user/"+userId+"/theatre/"+theatreId, Review);
+        }
+
+
         function findTheatreById(theatreId) {
             return $http.get("/api/theatre/"+theatreId);
         }

@@ -8,6 +8,7 @@
         vm.reviews = null;
         vm.getReviews = getReviews;
         vm.deleteReview = deleteReview;
+        vm.deleteuser = deleteuser;
         vm.getTickets = getTickets;
         vm.getUsersFollowed = getUsersFollowed;
 
@@ -52,6 +53,14 @@
             var promise = ReviewService.deleteUserReview(reviewId);
             promise.success(function (response) {
                 getReviews(userId);
+            }, function (error) {
+            });
+        }
+
+        function deleteuser(userId) {
+            var promise = UserService.deleteUser(userId);
+            promise.success(function (response) {
+                $location.url("/login");
             }, function (error) {
             });
         }

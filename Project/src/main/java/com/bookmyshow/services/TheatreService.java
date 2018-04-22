@@ -1,7 +1,9 @@
 package com.bookmyshow.services;
 
+import java.util.List;
 import java.util.Optional;
 
+import com.bookmyshow.models.Review;
 import com.bookmyshow.models.TheatreOwner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -55,7 +57,11 @@ public class TheatreService {
     }
 
 
-
+    @GetMapping("/api/theatre/{theatreId}/getReviews")
+    public List<Review> getAllReviews(@PathVariable("theatreId") int id) {
+        Optional<Theatre> theatre = theatreRepository.findById(id);
+        return theatre.get().getReviews();
+    }
 
 
 
