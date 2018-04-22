@@ -11,10 +11,6 @@
                 <li class="nav-item active"><a class="nav-link" href="#/">Home
                     <span class="sr-only">(current)</span>
                 </a></li>
-                <li class="nav-item"><a class="nav-link" href="#/login">Login</a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#/register">Register</a>
-                </li>
                 <li class="nav-item"><a class="nav-link" href="#/">Contact</a></li>
             </ul>
         </div>
@@ -69,5 +65,7 @@
     </div>
 
 
-    <a  ng-click="model.updateUser(model.editUser)" class="btn btn-primary  btn-block">Update</a>
+
+    <a ng-show="model.role == 'user'"  ng-click="model.updateUser(model.editUser)" class="btn btn-primary  btn-block">Update</a>
+    <a ng-show="model.role == 'theatreOwner'"  ng-click="model.updateTheatreOwner(model.editUser)" class="btn btn-primary  btn-block">Update</a>
 </div>

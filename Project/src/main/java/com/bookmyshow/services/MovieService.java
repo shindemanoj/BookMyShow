@@ -48,7 +48,7 @@ public class MovieService {
 	}
 
 	@DeleteMapping("/api/movie/{movieId}")
-	public void deleteUser(@PathVariable("movieId") int movieId) {
+	public void deleteMovie(@PathVariable("movieId") int movieId) {
 		movieRepository.deleteById(movieId);
 	}
 

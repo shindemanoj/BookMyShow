@@ -15,7 +15,7 @@
             "getAllUsers": getAllUsers,
             "getReviews": getReviews,
             "follows": follows,
-            "getUsersFollowed" : getUsersFollowed
+            "getUsersFollowed" : getUsersFollowed,
             "getTickets": getTickets
         };
         return api;

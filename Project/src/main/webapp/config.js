@@ -60,12 +60,12 @@
                 controller: 'addMovieController',
                 controllerAs: 'model'
             })
-            .when("/admin/users", {
-                templateUrl: 'views/admin/templates/manage.users.view.client.html',
+            .when("/admin/manage", {
+                templateUrl: 'views/admin/templates/manage.entity.view.client.html',
                 controller: 'adminController',
                 controllerAs: 'model'
             })
-            .when("/admin/users/:uid/edit/:role", {
+            .when("/admin/manage/:uid/edit/:role", {
                 templateUrl: 'views/admin/templates/update.person.view.client.html',
                 controller: 'adminController',
                 controllerAs: 'model'
