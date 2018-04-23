@@ -16,7 +16,6 @@ public class Review {
 
 
 	@ManyToOne
-	@JsonIgnore
 	private Theatre  theatre;
 
 	@ManyToOne
