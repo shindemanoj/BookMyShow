@@ -9,12 +9,12 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link" href="#/">Home
-				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="#/user/{{model.userId}}">Home </a></li>
 				<li class="nav-item active"><a class="nav-link" href="">Profile
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#/">Contact</a></li>
+				<li class="nav-item"><a class="nav-link" href="#/">LogOut</a></li>
 			</ul>
 		</div>
 	</div>
@@ -23,6 +23,10 @@
 <div class="container padding-top ">
 	<h2 ng-show="model.user.username" class="alert alert-warning">Welcome
 		{{model.user.firstName}}!</h2>
+	<div class="pull-right">
+		<h5>Wallet Amount: {{model.user.wallet}}$</h5>
+	</div>
+	<br />
 	<div class="alert alert-danger" ng-show="model.error" role="alert">
 		{{model.error}}</div>
 
@@ -79,14 +83,141 @@
 				class="form-control  text-color" id="phone-number">
 		</div>
 	</div>
-
+	<div class="form-group">
+		<label class="label-color" for="address">Address</label> <input
+			ng-model="model.user.address.street1" type="text"
+			class="form-control" placeholder="Street 1"><input
+			ng-model="model.user.address.street2" type="text"
+			class="form-control" placeholder="Street 2"><input
+			ng-model="model.user.address.city" type="text" class="form-control"
+			placeholder="city"><input ng-model="model.user.address.state"
+			type="text" class="form-control" placeholder="State"><input
+			ng-model="model.user.address.zip" type="text" class="form-control"
+			placeholder="Zip Code">
+	</div>
 
 
 
 	<a class="btn btn-danger btn-block"
-		ng-click="model.deleteuser(model.user.id)">Unregister</a>
-	<a class="btn btn-primary  btn-block"
-		ng-click="showDiv=false; model.updateuser(model.user)"
-		href="#/user/{{model.user.id}}/profile">Update</a>
+		ng-click="model.deleteuser(model.user.id)">Unregister</a> <a
+		class="btn btn-primary  btn-block"
+		ng-click="showDiv=false; model.updateUser(model.user)"
+		href="#/user/{{model.user.id}}/profile">Update</a> <br>
 
+	<div ng-show="model.tickets.length > 0">
+		<h5>My Tickets</h5>
+	</div>
+	<div class="container-fluid">
+		<table ng-show="model.tickets.length > 0" class="table">
+			<thead class="thead-dark" style="background-color: white">
+				<tr>
+					<th scope="col">Booking Number</th>
+					<th scope="col">Theatre Name</th>
+					<th scope="col">Theatre Location</th>
+					<th scope="col">Movie Name</th>
+					<th scope="col">Date</th>
+					<th scope="col">Time</th>
+					<th scope="col">Seats</th>
+				</tr>
+			</thead>
+			<tbody style="overflow-y: scroll; height: 200px; width: 100%;">
+				<tr ng-repeat="ticket in model.tickets">
+					<td>{{ticket.id}}</td>
+					<td>{{ticket.theatreName}}</td>
+					<td>{{ticket.theatreAdress}}</td>
+					<td>{{ticket.movieName}}</td>
+					<td>{{ticket.date}}</td>
+					<td>{{ticket.time}}</td>
+					<td>{{ticket.seatsBooked.toString()}}</td>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<div ng-show="model.reviews.length > 0">
+		<h5>My Reviews</h5>
+	</div>
+
+	<div ng-repeat="review in model.reviews">
+		<div class="card bg-light" style="height: inherit">
+			<div class="card-body alert alert-default">
+				<div ng-show="review.movie">
+					<label><font color="#a52a2a">{{review.movie.title}}</font>:</label>
+					<a class="fa fa-remove button pull-right"
+						ng-click="model.deleteReview(review.id)" href=""></a>
+				</div>
+				<div ng-show="review.theatre">
+					<label><font color="#a52a2a">{{review.theatre.name}}</font>:</label>
+					<a class="fa fa-remove button pull-right"
+						ng-click="model.deleteReview(review.id)" href=""></a>
+				</div>
+				<div>
+					<label class="cool-fonts"><font color="#4169e1">{{review.description}}</font></label><br>
+					<label class="text-muted"></label>
+				</div>
+			</div>
+		</div>
+		<br>
+	</div>
+
+	<br>
+	<div ng-show="model.following.length > 0">
+		<h5>You are Following:</h5>
+	</div>
+
+	<div ng-repeat="following in model.following" class="list-group">
+		<a href="" ng-click="model.getReviewsOfUser(following.id)"
+			data-target="#myModal" data-toggle="modal"
+			class="list-group-item list-group-item-action">{{following.username}}</a>
+	</div>
+
+
+	<br>
+	<div ng-show="model.followers.length > 0">
+		<h5>Followers:</h5>
+	</div>
+
+	<ul ng-repeat="followers in model.followers" class="list-group">
+		<li class="list-group-item">{{followers.username}}</li>
+	</ul>
+
+
+
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Reviews:</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+
+				<div ng-repeat="review in model.userReviews">
+					<div class="card bg-light" style="height: inherit">
+						<div class="card-body alert alert-default">
+							<div ng-show="review.movie">
+								<label><font color="#a52a2a">{{review.movie.title}}</font>:</label>
+							</div>
+							<div ng-show="review.theatre">
+								<label><font color="#a52a2a">{{review.theatre.name}}</font>:</label>
+							</div>
+							<div>
+								<label class="cool-fonts"><font color="#4169e1">{{review.description}}</font></label><br>
+								<label class="text-muted"></label>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
 </div>

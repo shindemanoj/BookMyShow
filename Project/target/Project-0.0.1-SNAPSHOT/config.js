@@ -35,7 +35,7 @@
                 controller: 'registerController',
                 controllerAs: 'model'
             })
-            .when("/movie/details", {
+            .when("/movie/:movieId/details", {
                 templateUrl: 'views/user/templates/home.details.view.client.html',
                 controller: 'homeDetailsController',
                 controllerAs: 'model'
@@ -60,14 +60,34 @@
                 controller: 'addMovieController',
                 controllerAs: 'model'
             })
-            .when("/admin/users", {
-                templateUrl: 'views/admin/templates/manage.users.view.client.html',
+            .when("/admin/manage", {
+                templateUrl: 'views/admin/templates/manage.entity.view.client.html',
                 controller: 'adminController',
                 controllerAs: 'model'
             })
-            .when("/admin/users/:uid/edit/:role", {
+            .when("/admin/manage/:uid/edit/:role", {
                 templateUrl: 'views/admin/templates/update.person.view.client.html',
                 controller: 'adminController',
+                controllerAs: 'model'
+            })
+            .when("/user/:userId/movie/:movieId/movieShow", {
+                templateUrl: 'views/movieshow/templates/movie.show.view.client.html',
+                controller: 'movieShowController',
+                controllerAs: 'model'
+            })
+            .when("/user/:userId/movie/:movieId/movieShow/:movieShowId", {
+                templateUrl: 'views/movieshow/templates/book.movie.show.view.client.html',
+                controller: 'bookMovieShowController',
+                controllerAs: 'model'
+            })
+            .when("/user/:userId/movie/:movieId/movieShow/:movieShowId/ticket/:ticketId", {
+                templateUrl: 'views/movieshow/templates/confirmation.view.client.html',
+                controller: 'confirmationController',
+                controllerAs: 'model'
+            })
+            .when("/user/:userId/movie/:movieId/theater/:thId/details", {
+                templateUrl: 'views/theatreOwner/templates/theatre.details.view.client.html',
+                controller: 'theatreDetailsController',
                 controllerAs: 'model'
             })
             .otherwise({

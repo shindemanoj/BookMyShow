@@ -1,0 +1,157 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="#/">Book My Show</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active"><a class="nav-link" href="#/">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="#/">LogOut</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+
+<div class="container padding-top" id="UserDiv">
+	<button type="button" class="btn btn-primary" data-target="#myModal"
+		data-toggle="modal">Add User</button>
+	<table class="table" id="UserTbl">
+		<thead class="thead-dark" style="background-color: white">
+			<tr>
+				<th scope="col">UserName</th>
+				<th scope="col">Email</th>
+				<th scope="col">Role</th>
+				<th scope="col">Action</th>
+			</tr>
+		</thead>
+		<tbody id="UserBdy"
+			style="overflow-y: scroll; height: 200px; width: 100%;">
+			<tr ng-repeat="user in model.allUsers">
+				<td>{{user.username}}</td>
+				<td>{{user.email}}</td>
+				<td>User</td>
+				<td><a class="fa fa-edit button"
+					ng-click="model.redirectFunc(user.id, 'user')" href=""></a> <a
+					class="fa fa-remove button" ng-click="model.deleteUser(user.id)"
+					href=""></a></td>
+			</tr>
+			<tr ng-repeat="user in model.allTheatreOwners">
+				<td>{{user.username}}</td>
+				<td>{{user.email}}</td>
+				<td>Theatre Owner</td>
+				<td><a class="fa fa-edit button"
+					ng-click="model.redirectFunc(user.id, 'theatreOwner')" href=""></a>
+					<a class="fa fa-remove button"
+					ng-click="model.deleteTheatreOwner(user.id)" href=""></a></td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container padding-top" id="MovieDiv">
+	<table class="table" id="MovieTbl">
+		<thead class="thead-dark" style="background-color: white">
+			<tr>
+				<th scope="col">Movie Title</th>
+				<th scope="col">Release Date</th>
+				<th scope="col">Action</th>
+			</tr>
+		</thead>
+		<tbody id="MovieBdy"
+			style="overflow-y: scroll; height: 200px; width: 100%;">
+			<tr ng-repeat="movie in model.allMovies">
+				<td>{{movie.title}}</td>
+				<td>{{movie.releaseDate}}</td>
+				<!--<td><a class="fa fa-edit button" ng-click="model.redirectFunc(user.id, 'user')" href=""></a>-->
+				<td><a class="fa fa-remove button"
+					ng-click="model.deleteMovie(movie.id)" href=""></a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Add User</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+
+
+				<div ng-show="model.error" class="alert alert-danger" role="alert">
+					{{model.error}}</div>
+				<div ng-show="model.success" class="alert alert-success" role="alert">
+					{{model.success}}</div>
+
+				<input ng-model="model.user.username" type="text"
+					class="form-control" placeholder="username" /> <input
+					ng-model="model.user.password" type="password" class="form-control"
+					placeholder="password" /> <input type="password"
+					class="form-control" placeholder="verify password" /> <input
+					ng-model="model.user.email" type="email" class="form-control"
+					placeholder="email ID"> <input
+					ng-model="model.user.firstName" type="text" class="form-control"
+					placeholder="first name"> <input
+					ng-model="model.user.lastName" type="text" class="form-control"
+					placeholder="last name"> <input ng-model="model.user.phone"
+					type="text" class="form-control" placeholder="phone number">
+				<h4>Enter Address:</h4>
+
+				<input ng-model="model.user.address.street1" type="text"
+					class="form-control" placeholder="Street 1"><input
+					ng-model="model.user.address.street2" type="text"
+					class="form-control" placeholder="Street 2"><input
+					ng-model="model.user.address.city" type="text" class="form-control"
+					placeholder="city"><input
+					ng-model="model.user.address.state" type="text"
+					class="form-control" placeholder="State"><input
+					ng-model="model.user.address.zip" type="text" class="form-control"
+					placeholder="Zip Code">
+
+				<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-user text-color"></span>
+					</div>
+					<div class="row container-fluid">
+						<div class="col-md-6 col-sm-6  btn btn-default col-xs-12">
+							<label class=" text-color"> <input type="radio"
+								value="theatreowner" name="chooseone" ng-model="model.user.role">
+								Theatre-Owner
+							</label>
+						</div>
+						<div class="col-md-6 col-sm-6 btn btn-default col-xs-12">
+							<label class="text-color"> <input type="radio"
+								value="user" name="chooseone" ng-model="model.user.role">
+								User
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<a class="btn btn-primary btn-block"
+					ng-click="model.register(model.user)">Add</a>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>

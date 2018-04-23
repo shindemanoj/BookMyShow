@@ -2,8 +2,7 @@
 <html lang="en" ng-app="BookMyShow">
 <head>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet"
 	href="/webjars/textAngular/1.5.14/dist/textAngular.css">
 <link rel="stylesheet"
@@ -20,11 +19,11 @@
 
 	<div ng-view></div>
 	<!-- Footer -->
-	<footer class="footer fixed-bottom">
-		<div class="container">
-			<span class="text-muted">Copyright &copy; Book My Show 2018.</span>
-		</div>
-	</footer>
+	<!--<footer class="footer fixed-bottom">-->
+		<!--<div class="container">-->
+			<!--<span class="text-muted">Copyright &copy; Book My Show 2018.</span>-->
+		<!--</div>-->
+	<!--</footer>-->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -59,6 +58,10 @@
 	<script
 		src="views/theatreOwner/controllers/theatre.controller.client.js"></script>
 	<script src="views/admin/controllers/admin.controller.client.js"></script>
+	<script src="views/movieshow/controllers/movie.show.controller.client.js"></script>
+	<script src="views/movieshow/controllers/book.movie.show.controller.client.js"></script>
+	<script src="views/movieshow/controllers/confirmation.controller.client.js"></script>
+	<script src="views/theatreOwner/controllers/theatre.details.controller.client.js"></script>
 
 	<!-- Services -->
 	<script src="services/user.service.client.js"></script>
@@ -67,6 +70,7 @@
 	<script src="services/movie.service.client.js"></script>
 	<script src="services/movie.data.service.client.js"></script>
 	<script src="services/movie.show.service.client.js"></script>
+	<script src="services/review.service.client.js"></script>
 
 </body>
 </html>

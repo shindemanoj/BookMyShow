@@ -58,7 +58,7 @@
 							vm.error = "Error in adding movie shows.";
 						}
 					}).error(function(err) {
-				vm.error = 'Exception in API';
+				vm.error = 'Error in adding movie shows';
 			});
 		}
 

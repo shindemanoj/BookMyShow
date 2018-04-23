@@ -1,4 +1,11 @@
 <!-- Navigation -->
+
+<style>
+	.cool-fonts{
+		font-family: 'Gochi Hand', cursive;
+		font-size:20px;
+	}
+</style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	<div class="container">
 		<a class="navbar-brand" href="#/">Book My Show</a>
@@ -9,12 +16,12 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link" href="#/">Home
+				<li class="nav-item active"><a class="nav-link" href="#/user/{{model.userId}}">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="#/user/{{model.userId}}/profile">Profile</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="#/">Contact</a></li>
+				<li class="nav-item"><a class="nav-link" href="#/">LogOut</a></li>
 			</ul>
 		</div>
 	</div>
@@ -42,13 +49,27 @@
 			<h4>Synopsis:</h4>
 			<p>{{model.movie.plot}}</p>
 			<button type="button" class="btn btn-danger btn-lg btn-block"
-				ng-click="model.bookMovie()">Book Now</button>
+				ng-click="model.displayMovieShows(model.movie.id)">Book Now</button>
 		</div>
 	</div>
 	<!-- /.row -->
 	<br />
-	<div class="row">
+	<div>
 		<h2>Reviews:</h2>
 	</div>
+	<div><!--ng-show="model.userId"-->
+		<textarea class="form-control" rows="2"  ng-model="model.review.description"></textarea>
+		<button ng-click="model.postReview(model.review)" class="form-control btn-details btn btn-block btn-success">Post</button><br>
+	</div>
+
+
+	<div ng-repeat="review in model.reviews">
+		<div class="card bg-light" style="height: inherit">
+		<div class="card-body alert alert-default">
+			<div><label>Reviewed By <font color="#a52a2a">{{review.user.username}}</font>:</label><button id="follow" class="button-info pull-right" ng-click="model.follow(review.user.id)">Follow</button></div>
+			<div><label class="cool-fonts"><font color="#4169e1">{{review.description}}</font></label><br><label class="text-muted"></label></div>
+	</div>
+	</div>
+		<br>
+	</div>
 </div>
-<!-- /.container -->

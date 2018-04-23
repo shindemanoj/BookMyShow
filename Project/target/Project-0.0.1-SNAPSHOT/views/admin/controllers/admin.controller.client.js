@@ -2,18 +2,23 @@
     angular
         .module("BookMyShow")
         .controller("adminController", adminController);
-    function adminController($location, $scope, $routeParams, UserService, TheatreOwnerService, TheatreService, $rootScope, $route){
+    function adminController($location, $scope, $routeParams, UserService, TheatreOwnerService, TheatreService, MovieService, $rootScope, $route, UserService){
         var vm = this;
         vm.editId = $routeParams['uid'];
         vm.role=  $routeParams['role'];
         vm.allUsers=null;
+        vm.allMovies=null;
         vm.allTheatreOwners=null;
         vm.deleteUser = deleteUser;
         vm.deleteTheatreOwner=deleteTheatreOwner;
+        vm.deleteMovie =deleteMovie;
         vm.updateUser = updateUser;
         vm.redirectFunc= redirectFunc;
         vm.listUsers = listUsers;
+        vm.listMovies = listMovies;
+        vm.updateTheatreOwner = updateTheatreOwner;
         vm.logout = logout;
+        vm.register = register;
 
         function init() {
             if (vm.role){
@@ -21,6 +26,7 @@
             }
             else {
                 listUsers();
+                listMovies();
             }
         }
         init();
@@ -42,8 +48,18 @@
                 });
         }
 
+        function listMovies() {
+            var promise = MovieService.findNowPlayingMovies();
+            promise.success(function (movies) {
+                    vm.allMovies = movies;
+                },
+                function (err) {
+                    vm.error = err;
+                });
+        }
+
         function redirectFunc(userId, role) {
-            $location.url("/admin/users/"+userId+"/edit/"+role);
+            $location.url("/admin/manage/"+userId+"/edit/"+role);
         }
 
 
@@ -58,8 +74,8 @@
                      });
 
              }
-             else if (role === "theatreOwner") {
-                 var promise = TheatreOwnerService.findTheatreOwnerById(editId);
+             else if (vm.role === "theatreOwner") {
+                 var promise = TheatreOwnerService.findTheatreOwnerById(vm.editId);
                  promise.success(function (user) {
                          vm.editUser =  user;
                      },
@@ -77,7 +93,7 @@
                         $route.reload();
                     });}
             else{
-                $location.redirect("/admin/users");//+vm.adminId);
+                $location.redirect("/admin/manage");//+vm.adminId);
             }
         }
 
@@ -88,7 +104,18 @@
                         $route.reload();
                     });}
             else{
-                $location.url("/admin/users");//+vm.adminId);
+                $location.url("/admin/manage");//+vm.adminId);
+            }
+        }
+
+        function deleteMovie(movieId) {
+            if(confirm('are you sure?')){
+                MovieService.deleteNowPlayingMovies(movieId)
+                    .then(function () {
+                        $route.reload();
+                    });}
+            else{
+                $location.url("/admin/manage");//+vm.adminId);
             }
         }
 
@@ -121,5 +148,48 @@
                     vm.error = "unable to update user";
                 });
         }
+
+        function updateTheatreOwner(newTheatreOwner) {
+
+            var userId = vm.editId;
+            TheatreOwnerService
+                .updateTheatreOwner(userId, newTheatreOwner)
+                .success(function (response) {
+                    init();
+                    vm.message = "user successfully updated";
+                })
+                .error(function () {
+                    vm.error = "unable to update user";
+                });
+        }
+        
+        function register(user) {
+			UserService.findUserByUsername(user.username).success(
+					function(result) {
+						if(result.length === 0){
+							if(user.role === "user"){
+							user.wallet = 50;	
+							UserService.createUser(user).success(function(user) {
+								vm.success = "User added Successfully!.";
+								listUsers();
+							}).error(function() {
+								vm.error = 'sorry could not register';
+							});
+						}
+						else {
+                                TheatreOwnerService.createTheatreOwner(user).success(function(user) {
+                                	vm.success = "User added Successfully!.";
+                                }).error(function() {
+                                    vm.error = 'sorry could not register';
+                                    listUsers();
+                                });
+							}}
+						else{
+							vm.error = "sorry that username is taken"
+						}
+					}).error(function() {
+				
+			});
+		}
     }
 })();

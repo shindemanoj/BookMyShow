@@ -17,7 +17,9 @@
 					function(result) {
 						if(result.length === 0){
 							if(user.role === "user"){
+							user.wallet = 50;	
 							UserService.createUser(user).success(function(user) {
+								alert("Congratulations! 50$ has been added to your BookMyShow Wallet!.");
                                 $location.url('/user/' + user.id);
 							}).error(function() {
 								vm.error = 'sorry could not register';

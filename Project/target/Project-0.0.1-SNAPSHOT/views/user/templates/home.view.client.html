@@ -28,27 +28,41 @@
 	<!-- Page Heading -->
 	<h1 class="my-4">Upcoming Movies</h1>
 
-	<div class="row">
-		<div class="col-lg-4 col-sm-6 portfolio-item"
-			ng-repeat="movie in model.movies">
-			<div class="card">
-				<a href="" ng-click="model.setMovieDetail(movie)"><img class="card-img-top"
-					src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt=""></a>
-				<div class="card-body">
-					<h4 class="card-title">
-						<a href="" ng-click="model.setMovieDetail(movie)">{{movie.original_title}}</a>
-						<div class=" pull-right"">
-						<i class="fa fa-heart" style="font-size:23px;color:red"></i>
-						{{movie.vote_average}}
-						</div>
-						<div><br/></div>
-						<button type="button" class="btn btn-danger btn-block" ng-click="model.bookMovie()">Book Now</button>
-					</h4>
+	<div class="container-fluid">
+		<div class="form-group">
+			<input ng-model="searchText" id="searchBar" type="text"
+				name="searchBar" class="form-control" placeholder="Search.." />
+		</div>
+	</div>
+	<div id="searchTextResults">
+		<br>
+		<div ng-if="!model.movies.length">No movies found.</div>
+		<div class="row">
+			<div class="col-lg-4 col-sm-6 portfolio-item"
+				ng-repeat="movie in model.movies | filter:searchText">
+				<div class="card">
+					<a href="" ng-click="model.setMovieDetail(movie)"><img
+						class="card-img-top"
+						src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt=""></a>
+					<div class="card-body">
+						<h4 class="card-title">
+							<a href="" ng-click="model.setMovieDetail(movie)">{{movie.original_title}}</a>
+							<div class=" pull-right"">
+								<i class="fa fa-heart" style="font-size: 23px; color: red"></i>
+								{{movie.vote_average}}
+							</div>
+							<div>
+								<br />
+							</div>
+							<button type="button" class="btn btn-danger btn-block"
+								ng-click="model.bookMovie()">Book Now</button>
+						</h4>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- /.row -->
+		<!-- /.row -->
 
+	</div>
 </div>
 <!-- /.container -->

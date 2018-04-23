@@ -12,9 +12,23 @@
             "findUserByCredentials" : findUserByCredentials,
             "updateUser" : updateUser,
             "deleteUser" : deleteUser,
-            "getAllUsers": getAllUsers
+            "getAllUsers": getAllUsers,
+            "getReviews": getReviews,
+            "follows": follows,
+            "getUsersFollowed" : getUsersFollowed,
+            "getTickets": getTickets,
+            "findAdminByCredentials": findAdminByCredentials,
+            "getUsersFollowers": getUsersFollowers
         };
         return api;
+        
+        function getTickets(userId) {
+            return $http.get("/api/user/"+userId+"/ticket");
+        }
+        
+        function getReviews(userId) {
+            return $http.get("/api/user/"+userId+"/getReviews");
+        }
 
         function createUser(newUser) {
             return $http.post("/api/user", newUser);
@@ -28,6 +42,9 @@
         function findUserByCredentials(username, password) {
             return $http.get("/api/user?username="+username+"&password="+password);
         }
+        function findAdminByCredentials(username, password) {
+            return $http.get("/api/admin?username="+username+"&password="+password);
+        }
         function updateUser(userId, newUser){
             return $http.put("/api/user/"+userId, newUser);
         }
@@ -36,6 +53,15 @@
         }
         function getAllUsers() {
             return $http.get("/api/user");
+        }
+        function follows(followerId, userId){
+            return $http.put("/api/user/"+userId+"/followedBy/"+followerId);
+        }
+        function getUsersFollowed(userId) {
+            return $http.get("/api/user/"+userId+"/getUsersFollowed");
+        }
+        function getUsersFollowers(userId) {
+            return $http.get("/api/user/"+userId+"/getUsersFollowers");
         }
     }
 })();

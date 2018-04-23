@@ -11,11 +11,15 @@
             "updateTheatre" : updateTheatre,
             "deleteTheatre" : deleteTheatre,
             "findMoviesForTheatre" :findMoviesForTheatre,
-            "logout" : logout
-        };
+            "getReviews" : getReviews
+            };
         return api;
 
-        
+
+        function getReviews(theatreId) {
+            return $http.get("/api/theatre/"+theatreId+"/getReviews");
+        }
+
         function findMoviesForTheatre(theatreId) {
             return $http.get("/api/theatre/"+theatreId+"/movie");
         }
@@ -34,9 +38,6 @@
         }
         function deleteTheatre(theatreId) {
             return $http.delete('/api/theatre/'+theatreId);
-        }
-        function logout() {
-            return $http.post("/api/logout");
         }
 
     }
