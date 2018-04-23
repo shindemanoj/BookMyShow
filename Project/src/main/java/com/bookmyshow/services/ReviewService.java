@@ -53,4 +53,9 @@ public class ReviewService {
     @DeleteMapping("/api/review/{reviewId}")
     public void deleteReview(@PathVariable("reviewId") int reviewId) { reviewRepository.deleteById(reviewId);
     }
+
+    @GetMapping("/api/reviews/getAll")
+    public Iterable<Review> findAllReviews() {
+        return reviewRepository.findAll();
+    }
 }

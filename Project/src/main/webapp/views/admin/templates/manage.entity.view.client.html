@@ -54,7 +54,6 @@
 
 		</tbody>
 	</table>
-</div>
 
 <br>
 <br>
@@ -82,6 +81,26 @@
 	</table>
 </div>
 
+	<div class="container padding-top" id="ReviewDiv">
+	    <table class="table" id="ReviewTbl">
+	        <thead class="thead-dark" style="background-color: white">
+	        <tr>
+	            <th scope="col">By</th>
+	            <th scope="col">Review</th>
+	            <th scope="col">Action</th>
+	        </tr>
+	        </thead>
+	        <tbody id="ReviewBdy" style="overflow-y: scroll; height: 200px; width: 100%;">
+	        <tr ng-repeat="review in model.allReviews">
+	            <td>{{review.user.username}}</td>
+	            <td>{{review.description}}</td>
+	            <!--<td><a class="fa fa-edit button" ng-click="model.redirectFunc(user.id, 'user')" href=""></a>-->
+	            <td><a class="fa fa-remove button" ng-click="model.deleteReview(review.id)" href=""></a></td>
+	        </tr>
+	        </tbody>
+	    </table>
+	</div>
+</div>
 <div class="modal fade" id="myModal" role="dialog">
 	<div class="modal-dialog">
 
@@ -155,3 +174,5 @@
 
 	</div>
 </div>
+
+

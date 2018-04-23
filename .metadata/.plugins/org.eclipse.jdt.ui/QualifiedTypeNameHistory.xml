@@ -50,4 +50,9 @@
 <fullyQualifiedTypeName name="org.assertj.core.internal.ObjectArrays"/>
 <fullyQualifiedTypeName name="java.util.stream.Stream"/>
 <fullyQualifiedTypeName name="com.bookmyshow.repositories.MovieTicketRepository"/>
+<fullyQualifiedTypeName name="javax.persistence.MapsId"/>
+<fullyQualifiedTypeName name="com.bookmyshow.models.Address"/>
+<fullyQualifiedTypeName name="com.bookmyshow.repositories.AddressRepository"/>
+<fullyQualifiedTypeName name="com.bookmyshow.models.Admin"/>
+<fullyQualifiedTypeName name="com.bookmyshow.repositories.AdminRepository"/>
 </qualifiedTypeNameHistroy>

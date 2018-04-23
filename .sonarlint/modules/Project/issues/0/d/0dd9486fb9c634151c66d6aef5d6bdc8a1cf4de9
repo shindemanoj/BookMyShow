@@ -1,5 +1,5 @@
 
-yjavascript:UnusedVariable"8Remove the declaration of the unused 'promise' variable.(«ò8í€ø®®,HëRMINORZ
+rjavascript:S1854":Remove this useless assignment to local variable "promise"(«ò8í€ø®®,H:RMAJORZ
 CODE_SMELL
-rjavascript:S1854":Remove this useless assignment to local variable "promise"(«ò8í€ø®®,HìRMAJORZ
+yjavascript:UnusedVariable"8Remove the declaration of the unused 'promise' variable.(«ò8í€ø®®,HŒ:RMINORZ
 CODE_SMELL

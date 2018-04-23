@@ -1,0 +1,9 @@
+
+javascript:S2814N"HRename "promise" as this name is already used in declaration at line 68.(½ ×èþÿÿÿÿHèFRMAJORZ
+CODE_SMELL
+Vjavascript:S1442Z""Remove this usage of confirm(...).(ºÓÆHãFRMINORZVULNERABILITY
+javascript:S2814*"HRename "promise" as this name is already used in declaration at line 35.(èÔà§øÿÿÿÿHçFRMAJORZ
+CODE_SMELL
+v$javascript:DuplicateFunctionArgument"7Rename the duplicated function parameter "UserService".(‰ÿ•¾HéFRMAJORZBUG
+Vjavascript:S1442p""Remove this usage of confirm(...).(ºÓÆHåFRMINORZVULNERABILITY
+Vjavascript:S1442e""Remove this usage of confirm(...).(ºÓÆHäFRMINORZVULNERABILITY

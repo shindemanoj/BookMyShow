@@ -5,7 +5,18 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2018-04-20T17:55:00Z</updated>
+  <updated>2018-04-23T14:13:39Z</updated>
+  <entry>
+    <title>Dependency Management Plugin 1.0.5.RELEASE</title>
+    <link rel="alternate" href="https://spring.io/blog/2018/04/23/dependency-management-plugin-1-0-5-release" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2018-04-23:3257</id>
+    <updated>2018-04-23T14:13:39Z</updated>
+    <content type="html">&lt;p&gt;I am pleased to announce that &lt;a href="https://github.com/spring-gradle-plugins/dependency-management-plugin"&gt;Gradle dependency management plugin&lt;/a&gt; 1.0.5.RELEASE is now available from Maven Central, Bintray, and the &lt;a href="https://plugins.gradle.org/plugin/io.spring.dependency-management"&gt;Gradle Plugin Portal&lt;/a&gt;. This maintenance release fixes a &lt;a href="https://github.com/spring-gradle-plugins/dependency-management-plugin/milestone/25?closed=1"&gt;handful of issues&lt;/a&gt;. It was included in the recent Spring Boot 1.5.12 and 2.0.1 releases and is also a recommended upgrade for all other users of the plugin.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring Cloud Data Flow 1.5 M1 released</title>
     <link rel="alternate" href="https://spring.io/blog/2018/04/20/spring-cloud-data-flow-1-5-m1-released" />
@@ -1632,48 +1643,5 @@ inputSource.poll(System.out::println);
     <content type="html">&lt;p&gt;CVE-2018-1270 was &lt;a href="https://spring.io/blog/2018/04/05/multiple-cve-reports-published-for-the-spring-framework"&gt;reported last week&lt;/a&gt;, and unfortunately, was not fully addressed in the 4.3.x branch of the Spring Framework.&lt;/p&gt;
 &lt;p&gt;A follow-up 4.3.16 version was created and released to Maven Central, and a new &lt;a href="https://pivotal.io/security/cve-2018-1275"&gt;CVE-2018-1275&lt;/a&gt; report was published. Please upgrade to 4.3.16 immediately!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Spring Boot 1.5.x Instructions:&lt;/strong&gt; if impacted by this issue, please upgrade to &lt;a href="https://spring.io/blog/2018/04/10/spring-boot-1-5-12-available-now"&gt;Spring Boot 1.5.12&lt;/a&gt;.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring IO Platform Cairo-RELEASE</title>
-    <link rel="alternate" href="https://spring.io/blog/2018/04/09/spring-io-platform-cairo-release" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Andy Wilkinson</name>
-    </author>
-    <id>tag:spring.io,2018-04-09:3239</id>
-    <updated>2018-04-09T09:56:00Z</updated>
-    <content type="html">&lt;p&gt;It&amp;rsquo;s my pleasure to announce that Spring IO Platform Cairo-RELEASE is now available from the &lt;a href="http://repo.spring.io/release/"&gt;Spring release repository&lt;/a&gt; and Maven Central. The Cairo generation of the Platform builds on top of Spring Framework 5.0 and Spring Boot 2.0 and requires Java 8.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-has-changed" class="anchor" name="what-has-changed"&gt;&lt;/a&gt;What has changed&lt;/h2&gt;
-&lt;p&gt;Cairo upgrades the versions of a number of projects:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Reactor Bismuth&lt;/li&gt;
-  &lt;li&gt;Spring AMQP 2.0&lt;/li&gt;
-  &lt;li&gt;Spring Batch 4.0&lt;/li&gt;
-  &lt;li&gt;Spring Boot 2.0&lt;/li&gt;
-  &lt;li&gt;Spring Cloud Connectors 2.0&lt;/li&gt;
-  &lt;li&gt;Spring Data Kay&lt;/li&gt;
-  &lt;li&gt;Spring Framework 5.0&lt;/li&gt;
-  &lt;li&gt;Spring Integration 5.0&lt;/li&gt;
-  &lt;li&gt;Spring Kafka 2.1&lt;/li&gt;
-  &lt;li&gt;Spring REST Docs 2.0&lt;/li&gt;
-  &lt;li&gt;Spring Security 5.0&lt;/li&gt;
-  &lt;li&gt;Spring Security OAuth 2.2&lt;/li&gt;
-  &lt;li&gt;Spring Session 2.0&lt;/li&gt;
-  &lt;li&gt;Spring Web Flow 2.5&lt;/li&gt;
-  &lt;li&gt;Spring Web Services 3.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Cairo removes the following projects from the Platform:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring Integration Flow&lt;/li&gt;
-  &lt;li&gt;Spring Integration Java DSL (now part of Spring Integration)&lt;/li&gt;
-  &lt;li&gt;Spring Integration Kafka&lt;/li&gt;
-  &lt;li&gt;Spring Integration Splunk&lt;/li&gt;
-  &lt;li&gt;Spring Mobile&lt;/li&gt;
-  &lt;li&gt;Spring Social Facebook&lt;/li&gt;
-  &lt;li&gt;Spring Social LinkedIn&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;For more information about dependency management that has been removed or replaced, please refer to the &lt;a href="https://docs.spring.io/platform/docs/Cairo-RELEASE/reference/htmlsingle/#upgrading-dependency-management"&gt;relevant section&lt;/a&gt; of the reference documentation.&lt;/p&gt;
-&lt;p&gt;The versions of numerous third-party dependencies have also been updated. For more information about the versions of the managed dependencies, please refer to the &lt;a href="https://docs.spring.io/platform/docs/Cairo-RELEASE/reference/htmlsingle/#appendix-dependency-versions"&gt;relevant section&lt;/a&gt; of the reference documentation.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-is-next" class="anchor" name="what-is-next"&gt;&lt;/a&gt;What is next&lt;/h2&gt;
-&lt;p&gt;Cairo will be the last generation of the Platform. Please see the &lt;a href="https://spring.io/blog/2018/04/09/spring-io-platform-end-of-life-announcement"&gt;end-of-life announcement&lt;/a&gt; for further information. Thank you to everyone who has used and contributed to the Platform over the past four years.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://platform.spring.io/platform"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/platform/docs/Cairo-RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>
