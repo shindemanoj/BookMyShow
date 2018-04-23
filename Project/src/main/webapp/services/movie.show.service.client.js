@@ -13,7 +13,8 @@
             "getMovieShow" : getMovieShow,
             "getMovieShowDetails" : getMovieShowDetails,
             "bookMovieShow" : bookMovieShow,
-            "getMovieTicketDetails": getMovieTicketDetails
+            "getMovieTicketDetails": getMovieTicketDetails,
+            "deleteMoviesForTheatre": deleteMoviesForTheatre
         };
         return api;
         
@@ -41,6 +42,9 @@
         }	
         function bookMovieShow(userId, movieShow, movieShowId) {
             return $http.post("/api/user/"+userId+"/movieshow/"+movieShowId, movieShow);
+        }
+        function deleteMoviesForTheatre(movieId, theatreId) {
+            return $http.delete("/api/theatre/"+theatreId +"/movie/"+movieId);
         }
     }
 })();

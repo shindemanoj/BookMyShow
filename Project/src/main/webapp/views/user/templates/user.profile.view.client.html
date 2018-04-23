@@ -102,11 +102,13 @@
 		ng-click="model.deleteuser(model.user.id)">Unregister</a> <a
 		class="btn btn-primary  btn-block"
 		ng-click="showDiv=false; model.updateUser(model.user)"
-		href="#/user/{{model.user.id}}/profile">Update</a> <br> <label>My
-		Tickets</label>
+		href="#/user/{{model.user.id}}/profile">Update</a> <br>
 
+	<div ng-show="model.tickets.length > 0">
+		<h5>My Tickets</h5>
+	</div>
 	<div class="container-fluid">
-		<table ng-show="model.tickets" class="table">
+		<table ng-show="model.tickets.length > 0" class="table">
 			<thead class="thead-dark" style="background-color: white">
 				<tr>
 					<th scope="col">Booking Number</th>
@@ -146,7 +148,7 @@
 				<div ng-show="review.theatre">
 					<label><font color="#a52a2a">{{review.theatre.name}}</font>:</label>
 					<a class="fa fa-remove button pull-right"
-					   ng-click="model.deleteReview(review.id)" href=""></a>
+						ng-click="model.deleteReview(review.id)" href=""></a>
 				</div>
 				<div>
 					<label class="cool-fonts"><font color="#4169e1">{{review.description}}</font></label><br>
@@ -163,7 +165,9 @@
 	</div>
 
 	<div ng-repeat="following in model.following" class="list-group">
-		<a href="" class="list-group-item list-group-item-action">{{following.username}}</a>
+		<a href="" ng-click="model.getReviewsOfUser(following.id)"
+			data-target="#myModal" data-toggle="modal"
+			class="list-group-item list-group-item-action">{{following.username}}</a>
 	</div>
 
 
@@ -177,5 +181,45 @@
 	</ul>
 
 
+
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Reviews:</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+
+				<div ng-repeat="review in model.userReviews">
+					<div class="card bg-light" style="height: inherit">
+						<div class="card-body alert alert-default">
+							<div ng-show="review.movie">
+								<label><font color="#a52a2a">{{review.movie.title}}</font>:</label>
+							</div>
+							<div ng-show="review.theatre">
+								<label><font color="#a52a2a">{{review.theatre.name}}</font>:</label>
+							</div>
+							<div>
+								<label class="cool-fonts"><font color="#4169e1">{{review.description}}</font></label><br>
+								<label class="text-muted"></label>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
 
 </div>
