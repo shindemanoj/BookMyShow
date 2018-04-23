@@ -18,6 +18,7 @@
             getReviews(userId);
             getUsersFollowed(userId);
             getTickets(userId);
+            getFollowers(userId);
         }
 
         init();
@@ -45,6 +46,15 @@
             var promise = UserService
                 .getUsersFollowed(userId).success(function (response) {
                     vm.following = response;
+                }, function (error) {
+
+                });
+        }
+        
+        function getFollowers(userId) {
+            var promise = UserService
+                .getUsersFollowers(userId).success(function (response) {
+                    vm.followers = response;
                 }, function (error) {
 
                 });

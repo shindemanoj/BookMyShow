@@ -20,7 +20,7 @@
 				vm.user = user;
 				vm.source = $sce
 				.trustAsResourceUrl("https://www.google.com/maps/embed/v1/directions?origin="
-						+ user.address.street1 + user.address.street2 + user.address.city + user.address.state + user.address.zip
+						+ user.address.street1 + " "+ user.address.street2 + " "+ user.address.city +" "+ user.address.state + " "+ user.address.zip
 						+ "&destination="
 						+ vm.movieTicket.theatreAdress
 						+ "&key=AIzaSyANw0wlspxQEEv2GUhEXe-gZ78kHx64OtE");

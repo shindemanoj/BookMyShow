@@ -105,8 +105,8 @@
 		href="#/user/{{model.user.id}}/profile">Update</a> <br> <label>My
 		Tickets</label>
 
-	<div class="container-fluid" style="height: 350px">
-		<table class="table">
+	<div class="container-fluid">
+		<table ng-show="model.tickets" class="table">
 			<thead class="thead-dark" style="background-color: white">
 				<tr>
 					<th scope="col">Booking Number</th>
@@ -130,7 +130,10 @@
 			</tbody>
 		</table>
 	</div>
-	<br> <label>My Reviews</label>
+	<br>
+	<div ng-show="model.reviews.length > 0">
+		<h5>My Reviews</h5>
+	</div>
 
 	<div ng-repeat="review in model.reviews">
 		<div class="card bg-light" style="height: inherit">
@@ -149,11 +152,24 @@
 		<br>
 	</div>
 
-	<br> <label>You are Following</label>
-
-	<div ng-repeat="following in model.following">
-		<label><a href="">{{following.username}}</a></label>
+	<br>
+	<div ng-show="model.following.length > 0">
+		<h5>You are Following:</h5>
 	</div>
+
+	<div ng-repeat="following in model.following" class="list-group">
+		<a href="" class="list-group-item list-group-item-action">{{following.username}}</a>
+	</div>
+
+
+	<br>
+	<div ng-show="model.followers.length > 0">
+		<h5>Followers:</h5>
+	</div>
+
+	<ul ng-repeat="followers in model.followers" class="list-group">
+		<li class="list-group-item">{{followers.username}}</li>
+	</ul>
 
 
 

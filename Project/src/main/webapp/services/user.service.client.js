@@ -17,7 +17,8 @@
             "follows": follows,
             "getUsersFollowed" : getUsersFollowed,
             "getTickets": getTickets,
-            "findAdminByCredentials": findAdminByCredentials
+            "findAdminByCredentials": findAdminByCredentials,
+            "getUsersFollowers": getUsersFollowers
         };
         return api;
         
@@ -58,6 +59,9 @@
         }
         function getUsersFollowed(userId) {
             return $http.get("/api/user/"+userId+"/getUsersFollowed");
+        }
+        function getUsersFollowers(userId) {
+            return $http.get("/api/user/"+userId+"/getUsersFollowers");
         }
     }
 })();

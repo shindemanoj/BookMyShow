@@ -71,6 +71,12 @@ public class UserService {
 	@GetMapping("/api/user/{userId}/getUsersFollowed")
 	public List<User> getUsersFollowed(@PathVariable("userId") int id) {
 		Optional<User> user = userRepository.findById(id);
+		return user.get().getParent();
+	}
+	
+	@GetMapping("/api/user/{userId}/getUsersFollowers")
+	public List<User> getUsersFollowers(@PathVariable("userId") int id) {
+		Optional<User> user = userRepository.findById(id);
 		return user.get().getChildren();
 	}
 
