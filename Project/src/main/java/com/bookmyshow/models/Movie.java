@@ -20,7 +20,7 @@ public class Movie {
 	private String poster;
 	private int voteCount;
 	
-	@OneToMany(mappedBy="movie")
+	@OneToMany(mappedBy="movie", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<MovieShow> movieShows = new ArrayList<>();
 

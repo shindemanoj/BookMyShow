@@ -78,7 +78,7 @@
             TheatreService
                 .createTheatre(newtheatre, theatreOwnerId)
                 .success(function (response) {
-
+                	vm.theatre = response;
                     vm.message = "theatre added successfully";
                 })
                 .error(function () {
@@ -87,12 +87,17 @@
         }
 
         function deleteTheatre(theatreId) {
-            TheatreService.deleteTheatre(theatreId);
-            $location.url("/theatreOwner/"+theatreOwnerId+"/profile");
+            TheatreService.deleteTheatre(theatreId)
+            .success(function (response) {
+            	$location.url("/theatreOwner/"+theatreOwnerId+"/profile");
+            })
+            .error(function () {
+                vm.error = "Couldn't delete this theater";
+            });
         }
         
         function addMovie() {
-            $location.url("/theatreOwner/"+theatreOwnerId+"/theatre/"+theatreId+"/addMovie");
+            $location.url("/theatreOwner/"+theatreOwnerId+"/theatre/"+vm.theatre.id+"/addMovie");
         }
 
     }

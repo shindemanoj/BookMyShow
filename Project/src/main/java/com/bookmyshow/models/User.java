@@ -13,7 +13,7 @@ public class User extends Person {
 	
 	private int wallet;
 	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<MovieTicket> movieTickets;
 
@@ -21,7 +21,7 @@ public class User extends Person {
 	@JsonIgnore
 	private List<Review> reviews = new ArrayList<>();
 
-	@ManyToMany (mappedBy="children")
+	@ManyToMany (mappedBy="children", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<User> parent;
 
@@ -99,5 +99,15 @@ public class User extends Person {
 			user.getChildren()
 					.add(this);
 		}
+	}
+
+	public void set(User newUser) {
+		this.setAddress(newUser.getAddress());
+		this.setDob(newUser.getDob());
+		this.setEmail(newUser.getEmail());
+		this.setFirstName(newUser.getFirstName());
+		this.setLastName(newUser.getLastName());
+		this.setPassword(newUser.getPassword());
+		this.setPhone(newUser.getPhone());
 	}
 }

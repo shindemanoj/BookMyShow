@@ -6,6 +6,7 @@
 
         var vm = this;
         var theatreOwnerId = $routeParams['toid'];
+        vm.theatreOwnerId = theatreOwnerId;
         var theatreId = $routeParams['tid'];
         vm.theatreId = theatreId;
         vm.addTheatre= addTheatre;

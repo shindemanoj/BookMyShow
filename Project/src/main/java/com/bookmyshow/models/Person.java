@@ -15,7 +15,9 @@ public class Person {
 	private String email;
 	private Date dob;
 	private String phone;
-	@OneToOne
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_adress_id")
 	private Address address;
 
 	public Person() {
@@ -101,6 +103,9 @@ public class Person {
 
 	public void setAddress(Address address) {
 		this.address = address;
+		if(address.getPerson() != this) {
+			address.setPerson(this);
+		}
 	}
 
 	public Address getAddress() {

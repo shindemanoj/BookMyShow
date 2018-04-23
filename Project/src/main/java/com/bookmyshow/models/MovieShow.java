@@ -2,6 +2,7 @@ package com.bookmyshow.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,7 +33,7 @@ public class MovieShow {
 	@JsonIgnore
 	Theatre theatre;
 
-	@OneToMany(mappedBy="movieShow")
+	@OneToMany(mappedBy="movieShow", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<MovieTicket> movieTickets;
 	

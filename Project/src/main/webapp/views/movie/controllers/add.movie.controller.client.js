@@ -7,8 +7,9 @@
 		var vm = this;
 
 		vm.addMoviesToTheater = addMoviesToTheater;
-		var theatreOwnerId = $routeParams['toid'];
+		vm.theatreOwnerId = $routeParams['toid'];
 		var theatreId = $routeParams['tid'];
+		vm.theatreId = theatreId;
 		$scope.items = [];
 
 		$scope.items2 = $scope.items;

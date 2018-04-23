@@ -82,7 +82,6 @@ public class MovieShowService {
 		}
 		movieTicket.setUser(user.get());
 		movieTicket.setMovieShow(movieShow.get());
-		movieShowRepository.save(movieShow.get());
 		return movieTicketRepository.save(movieTicket);
 	}
 

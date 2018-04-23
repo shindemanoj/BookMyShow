@@ -8,6 +8,7 @@
     function profileController($location, $scope, $routeParams, UserService, TheatreOwnerService, TheatreService, $rootScope) {
         var vm = this;
         var theatreOwnerId = $routeParams['toid'];
+        vm.theatreOwnerId = theatreOwnerId;
         vm.updateTheatreOwner = updateTheatreOwner;
         vm.deleteTheatreOwner = deleteTheatreOwner;
         vm.removeTheatre = removeTheatre;
@@ -28,22 +29,31 @@
         }
 
         function init() {
-            vm.theatreOwner = TheatreOwnerService.findTheatreOwnerById(theatreOwnerId)
-                .success(renderUser);
+        	renderUser(theatreOwnerId);
         }
 
         init();
 
-        function renderUser(theatreOwner) {
-            vm.theatreOwner = theatreOwner;
-            var promise=TheatreOwnerService.getAllTheatres(theatreOwnerId);
-                promise.success(function (response) {
-                   vm.allTheatres=response;
-                })
-                .error(function () {
-                    vm.error = "could not load theatres";
-                });
-
+        function renderUser(theatreOwnerId) {
+        	TheatreOwnerService.findTheatreOwnerById(theatreOwnerId)
+            .success(function (response) {
+            	vm.theatreOwner = response;
+                getAllTheatres(theatreOwnerId);
+            })
+            .error(function () {
+                vm.error = "Couldn't delete this movie";
+            });
+            
+        }
+        
+        function getAllTheatres(theatreOwnerId){
+        	var promise=TheatreOwnerService.getAllTheatres(theatreOwnerId);
+            promise.success(function (response) {
+               vm.allTheatres=response;
+            })
+            .error(function () {
+                vm.error = "could not load theatres";
+            });
         }
 
         function updateTheatreOwner(newtheatreOwner) {
@@ -61,14 +71,24 @@
         }
 
         function deleteTheatreOwner(theatreOwnerId) {
-            TheatreOwnerService.deleteTheatreOwner(theatreOwnerId);
-            $location.url("/login");
+            TheatreOwnerService.deleteTheatreOwner(theatreOwnerId)
+            .success(function (response) {
+            	 $location.url("/login");
+            })
+            .error(function () {
+                vm.error = "could not delete theatre owner";
+            });
         }
 
         function removeTheatre(theatreId) {
-            TheatreService.deleteTheatre(theatreId);
-            TheatreOwnerService.deleteTheatreForTheatreOwner(theatreId, theatreOwnerId);
-            init();
+            TheatreService.deleteTheatre(theatreId)
+            .success(function (response) {
+            	getAllTheatres(vm.theatreOwnerId);
+            })
+            .error(function () {
+                vm.error = "could not delete theatre";
+            });
+          
         }
 
 

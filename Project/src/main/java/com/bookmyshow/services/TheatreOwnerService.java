@@ -43,7 +43,6 @@ public class TheatreOwnerService {
 
     @PostMapping("/api/theatreOwner")
     public TheatreOwner createThatreOwner(@RequestBody TheatreOwner theatreOwner) {
-    	addressRepository.save(theatreOwner.getAddress());
         return theatreOwnerRepository.save(theatreOwner);
     }
 
@@ -66,9 +65,9 @@ public class TheatreOwnerService {
 
     @PutMapping("/api/theatreOwner/{theatreOwnerId}")
     public TheatreOwner updateTheatreOwner(@PathVariable("theatreOwnerId") int id, @RequestBody TheatreOwner newTheatreOwner) {
-        newTheatreOwner.setId(id);
-        addressRepository.save(newTheatreOwner.getAddress());
-        return theatreOwnerRepository.save(newTheatreOwner);
+    	Optional<TheatreOwner> owner = theatreOwnerRepository.findById(id);
+    	owner.get().set(newTheatreOwner);
+        return theatreOwnerRepository.save(owner.get());
     }
 
     @PutMapping("/api/theatreOwner/{toId}/theatre/{tId}")
@@ -87,7 +86,7 @@ public class TheatreOwnerService {
         List<Theatre> theatres= theatreOwner.get().getTheatres();
         for (Theatre th: theatres) {
             if(th.getId()== theatreId){
-                theatres.remove(theatre);
+                theatres.remove(theatre.get());
             }
         }
         theatreOwner.get().setNoOfTheatres(theatreOwner.get().getNoOfTheatres()- 1);

@@ -20,7 +20,7 @@ public class Theatre {
 	@JsonIgnore
 	private TheatreOwner theatreOwner;
 
-	@OneToMany(mappedBy = "theatre")
+	@OneToMany(mappedBy = "theatre", cascade = CascadeType.ALL)
 	@JsonIgnore
 	List<MovieShow> movieShows = new ArrayList<>();
 
@@ -97,6 +97,12 @@ public class Theatre {
 
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
+	}
+
+	public void set(Theatre newTheatre) {
+		this.setDescription(newTheatre.getDescription());
+		this.setName(newTheatre.getName());
+		this.setLocation(newTheatre.getLocation());
 	}
 
 }

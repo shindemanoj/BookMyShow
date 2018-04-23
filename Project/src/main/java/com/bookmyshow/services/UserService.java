@@ -32,7 +32,6 @@ public class UserService {
 
 	@PostMapping("/api/user")
 	public User createUser(@RequestBody User user) {
-		addressRepository.save(user.getAddress());
 		return userRepository.save(user);
 	}
 
@@ -48,9 +47,9 @@ public class UserService {
 
 	@PutMapping("/api/user/{userId}")
 	public User updateUser(@PathVariable("userId") int id, @RequestBody User newUser) {
-		newUser.setId(id);
-		addressRepository.save(newUser.getAddress());
-		return userRepository.save(newUser);
+		Optional<User> user = userRepository.findById(id);
+		user.get().set(newUser);
+		return userRepository.save(user.get());
 	}
 
 	@GetMapping("/api/user/{userId}/getReviews")

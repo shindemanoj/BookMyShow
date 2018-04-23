@@ -3,15 +3,20 @@ package com.bookmyshow.services;
 import java.util.List;
 import java.util.Optional;
 
-import com.bookmyshow.models.Review;
-import com.bookmyshow.models.TheatreOwner;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmyshow.models.Review;
 import com.bookmyshow.models.Theatre;
 import com.bookmyshow.models.TheatreOwner;
-import com.bookmyshow.repositories.TheatreRepository;
 import com.bookmyshow.repositories.TheatreOwnerRepository;
+import com.bookmyshow.repositories.TheatreRepository;
 
 @RestController
 public class TheatreService {
@@ -52,8 +57,9 @@ public class TheatreService {
 
     @PutMapping("/api/theatre/{theatreId}")
     public Theatre updateTheatre(@PathVariable("theatreId") int id, @RequestBody Theatre newTheatre) {
-        newTheatre.setId(id);
-        return theatreRepository.save(newTheatre);
+    	Optional<Theatre> theatre = theatreRepository.findById(id);
+        theatre.get().set(newTheatre);
+        return theatreRepository.save(theatre.get());
     }
 
 

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -14,7 +15,7 @@ public class TheatreOwner extends Person {
 
 	private int noOfTheatres;
 
-	@OneToMany(mappedBy = "theatreOwner")
+	@OneToMany(mappedBy = "theatreOwner", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Theatre> theatres;
 
@@ -48,6 +49,16 @@ public class TheatreOwner extends Person {
 		if (theatre.getTheatreOwner() != this) {
 			theatre.setTheatreOwner(this);
 		}
+	}
+
+	public void set(TheatreOwner newTheatreOwner) {
+		this.setAddress(newTheatreOwner.getAddress());
+		this.setDob(newTheatreOwner.getDob());
+		this.setEmail(newTheatreOwner.getEmail());
+		this.setFirstName(newTheatreOwner.getFirstName());
+		this.setLastName(newTheatreOwner.getLastName());
+		this.setPassword(newTheatreOwner.getPassword());
+		this.setPhone(newTheatreOwner.getPhone());
 	}
 
 //	public void setTheatres(List<Theatre> theatres) {

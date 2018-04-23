@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Address {
 	@Id
@@ -16,7 +18,8 @@ public class Address {
 	private String city;
 	private String state;
 	private String zip;
-	@OneToOne
+	@OneToOne(mappedBy = "address")
+	@JsonIgnore
 	private Person person;
 	
 	public Address() {
@@ -86,6 +89,9 @@ public class Address {
 
 	public void setPerson(Person person) {
 		this.person = person;
+		if(person.getAddress() != this) {
+			person.setAddress(this);
+		}
 	}
 
 }

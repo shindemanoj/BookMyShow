@@ -11,6 +11,7 @@
             // "updateTheatre" : updateTheatre,
             "deleteUserReview" : deleteUserReview,
             "createReviewTheatre" : createReviewTheatre,
+            "getAllReviews": getAllReviews,
             "logout" : logout
         };
         return api;
@@ -29,9 +30,9 @@
         function findTheatreById(theatreId) {
             return $http.get("/api/theatre/"+theatreId);
         }
-        // function findTheatreForTheatreOwner(id) {
-        //     return $http.get("/api/theatreOwner/theatre?id"+id);
-        // }
+        function getAllReviews() {
+             return $http.get("/api/reviews/getAll");
+        }
 
         function updateTheatre(theatreId, newTheatre){
             return $http.put("/api/theatre/"+theatreId, newTheatre);

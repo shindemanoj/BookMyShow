@@ -41,6 +41,7 @@
 	<br>
 	<h3 class="my-4">Select Theater and Movie Show</h3>
 	<br>
+	<div ng-show="model.movieShows.length == 0">Movie Shows not available</div>
 	<div ng-repeat="movieShow in model.movieShows" class="row">
 		<div class="col-lg-4">
 			<strong><a href="" class="text-warning" ng-click="model.getTheatreDetails(movieShow.id)">{{movieShow.name}}</a></strong></div>

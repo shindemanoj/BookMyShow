@@ -2,12 +2,13 @@
     angular
         .module("BookMyShow")
         .controller("adminController", adminController);
-    function adminController($location, $scope, $routeParams, UserService, TheatreOwnerService, TheatreService, MovieService, $rootScope, $route, UserService){
+    function adminController($location, $scope, $routeParams, UserService, TheatreOwnerService, TheatreService, ReviewService, MovieService, $rootScope, $route, UserService){
         var vm = this;
         vm.editId = $routeParams['uid'];
         vm.role=  $routeParams['role'];
         vm.allUsers=null;
         vm.allMovies=null;
+        vm.allReviews=null;
         vm.allTheatreOwners=null;
         vm.deleteUser = deleteUser;
         vm.deleteTheatreOwner=deleteTheatreOwner;
@@ -16,6 +17,8 @@
         vm.redirectFunc= redirectFunc;
         vm.listUsers = listUsers;
         vm.listMovies = listMovies;
+        vm.listReviews = listReviews;
+        vm.deleteReview = deleteReview;
         vm.updateTheatreOwner = updateTheatreOwner;
         vm.logout = logout;
         vm.register = register;
@@ -27,6 +30,7 @@
             else {
                 listUsers();
                 listMovies();
+                listReviews();
             }
         }
         init();
@@ -52,6 +56,16 @@
             var promise = MovieService.findNowPlayingMovies();
             promise.success(function (movies) {
                     vm.allMovies = movies;
+                },
+                function (err) {
+                    vm.error = err;
+                });
+        }
+
+        function listReviews() {
+            var promise = ReviewService.getAllReviews();
+            promise.success(function (reviews) {
+                    vm.allReviews = reviews;
                 },
                 function (err) {
                     vm.error = err;
@@ -111,6 +125,17 @@
         function deleteMovie(movieId) {
             if(confirm('are you sure?')){
                 MovieService.deleteNowPlayingMovies(movieId)
+                    .then(function () {
+                        $route.reload();
+                    });}
+            else{
+                $location.url("/admin/manage");//+vm.adminId);
+            }
+        }
+
+        function deleteReview(reviewId) {
+            if(confirm('are you sure?')){
+                ReviewService.deleteUserReview(reviewId)
                     .then(function () {
                         $route.reload();
                     });}

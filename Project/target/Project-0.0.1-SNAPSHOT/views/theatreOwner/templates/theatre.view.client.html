@@ -9,13 +9,6 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link" href="#/">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#/login">Login</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#/register">Register</a>
-				</li>
 				<li class="nav-item"><a class="nav-link" href="#/">LogOut</a></li>
 			</ul>
 		</div>
@@ -23,7 +16,8 @@
 </nav>
 
 <div class="container">
-	<h1>Add Theatre</h1>
+	<div ng-show="model.theatre === undefined"><h1>Add Theatre</h1></div>
+	<div ng-show="model.theatre"><h1>Update Theatre</h1></div>
 
 	<div ng-show="model.error" class="alert alert-danger" role="alert">
 		{{model.error}}</div>
@@ -39,12 +33,13 @@
 		ng-model="model.theatre.phone" type="text" class="form-control"
 		placeholder="phone number"> <a
 		class="btn btn-primary btn-block"
-		ng-click="model.addTheatre(model.theatre)">Submit</a> <a
+		ng-click="model.addTheatre(model.theatre)" ng-show="model.theatre === undefined">Submit</a> <a
 		class="btn btn-info btn-block" ng-show="model.theatre"
 		ng-click="model.updateTheatre(model.theatre)">Update</a> <a
 		class="btn btn-info btn-block" ng-show="model.theatre" ng-click="model.addMovie()">Add
 		Movie</a> <a class="btn btn-danger  btn-block"
-		href="#/theatreOwner/profile/{{model.theatreOwnerId}}">Cancel</a>
+		href="#/theatreOwner/{{model.theatreOwnerId}}/profile">Cancel</a>
+		<br/><br/>
 	<div ng-show="model.movies" ><h3>Now Playing Movies</h3></div>
 
 	<table ng-show="model.movies" class="table" id="TheatreTbl">
