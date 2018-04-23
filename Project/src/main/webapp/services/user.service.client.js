@@ -16,7 +16,8 @@
             "getReviews": getReviews,
             "follows": follows,
             "getUsersFollowed" : getUsersFollowed,
-            "getTickets": getTickets
+            "getTickets": getTickets,
+            "findAdminByCredentials": findAdminByCredentials
         };
         return api;
         
@@ -39,6 +40,9 @@
         }
         function findUserByCredentials(username, password) {
             return $http.get("/api/user?username="+username+"&password="+password);
+        }
+        function findAdminByCredentials(username, password) {
+            return $http.get("/api/admin?username="+username+"&password="+password);
         }
         function updateUser(userId, newUser){
             return $http.put("/api/user/"+userId, newUser);

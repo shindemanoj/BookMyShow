@@ -67,6 +67,7 @@ public class TheatreOwnerService {
     @PutMapping("/api/theatreOwner/{theatreOwnerId}")
     public TheatreOwner updateTheatreOwner(@PathVariable("theatreOwnerId") int id, @RequestBody TheatreOwner newTheatreOwner) {
         newTheatreOwner.setId(id);
+        addressRepository.save(newTheatreOwner.getAddress());
         return theatreOwnerRepository.save(newTheatreOwner);
     }
 

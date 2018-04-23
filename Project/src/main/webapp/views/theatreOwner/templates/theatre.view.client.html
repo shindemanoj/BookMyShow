@@ -16,7 +16,7 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" href="#/register">Register</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="#/">Contact</a></li>
+				<li class="nav-item"><a class="nav-link" href="#/">LogOut</a></li>
 			</ul>
 		</div>
 	</div>
@@ -42,10 +42,10 @@
 		ng-click="model.addTheatre(model.theatre)">Submit</a> <a
 		class="btn btn-info btn-block"
 		ng-click="model.updateTheatre(model.theatre)">Update</a> <a
-		class="btn btn-info btn-block" ng-click="model.addMovie()">Add
+		class="btn btn-info btn-block" ng-show="model.theatre" ng-click="model.addMovie()">Add
 		Movie</a> <a class="btn btn-danger  btn-block"
 		href="#/theatreOwner/profile/{{model.theatreOwnerId}}">Cancel</a>
-	<h3>Now Playing Movies</h3>
+	<div ng-show="model.movies" ><h3>Now Playing Movies</h3></div>
 
 	<table ng-show="model.movies" class="table" id="TheatreTbl">
 		<thead class="thead-dark" style="background-color: white">

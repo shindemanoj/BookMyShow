@@ -12,7 +12,6 @@
 
 		function init() {
 			getMovieTicketDetails(vm.movieTikcetId);
-			getUserDetails(vm.userId);
 		}
 		init();
 
@@ -21,9 +20,9 @@
 				vm.user = user;
 				vm.source = $sce
 				.trustAsResourceUrl("https://www.google.com/maps/embed/v1/directions?origin="
-						+ "226 Parker Hill Ave, 02120"
+						+ user.address.street1 + user.address.street2 + user.address.city + user.address.state + user.address.zip
 						+ "&destination="
-						+ "Regal Fenway Park"
+						+ vm.movieTicket.theatreAdress
 						+ "&key=AIzaSyANw0wlspxQEEv2GUhEXe-gZ78kHx64OtE");
 			}).error(function(err) {
 				vm.error = 'Movie Ticket Details not found';
@@ -34,6 +33,7 @@
 			MovieShowService.getMovieTicketDetails(movieTicketId).success(
 					function(movieTicket) {
 						vm.movieTicket = movieTicket;
+						getUserDetails(vm.userId);
 					}).error(function(err) {
 				vm.error = 'Movie Ticket Details not found';
 			});

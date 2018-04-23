@@ -49,6 +49,7 @@ public class UserService {
 	@PutMapping("/api/user/{userId}")
 	public User updateUser(@PathVariable("userId") int id, @RequestBody User newUser) {
 		newUser.setId(id);
+		addressRepository.save(newUser.getAddress());
 		return userRepository.save(newUser);
 	}
 
